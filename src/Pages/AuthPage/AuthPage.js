@@ -2,6 +2,8 @@ import React from 'react'
 import'./AuthPage.css'
 import { connect } from 'react-redux';
 import { SignInWithGoogle } from './../../Redux/Auth/authActions';
+import LoginForm from './../../Components/LoginForm/LoginForm'
+import SignUpForm from './../../Components/SignUpForm/SignUpForm';
 
 
 var AuthPage = ({Auth,SignInWithGoogle})=> {
@@ -9,11 +11,7 @@ var AuthPage = ({Auth,SignInWithGoogle})=> {
     
     return (
         <div className="auth-page">
-            
-            AuthPage
-
-
-
+            <SignUpForm/>
         </div>
     )
 }
