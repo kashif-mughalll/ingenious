@@ -1,13 +1,21 @@
 import './App.css';
 import TestPage from './Pages/TestPage/TestPage';
+import Footer from './Components/Footer/Footer'
+import Navbar from './Components/Navbar/Navbar';
+import { connect } from 'react-redux';
+import Dashboard from './Pages/DashBoard/Dashboard';
+import AuthPage from './Pages/AuthPage/AuthPage';
 
-function App() {
+var App = ({Auth})=> {
   return (
-    <div className="App">
-      <h1>Initial Configuration</h1>
-      {/* <TestPage/> */}
-    </div>
+     false ? <Dashboard/> : <AuthPage/>
   );
 }
 
-export default App;
+const mapState = (state) => {
+  return {
+    Auth : state.Auth
+  }
+}
+
+export default connect(mapState)(App);
