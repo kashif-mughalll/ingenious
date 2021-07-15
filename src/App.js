@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>Initial Configuration</h1>
-      <TestPage/>
+      {/* <TestPage/> */}
     </div>
   );
 }
