@@ -4,12 +4,17 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.1",
+    "@material-ui/pickers": "^3.3.10",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "firebase": "^8.7.1",
     "formic": "^0.0.10",
+<<<<<<< HEAD
     "formik": "^2.2.9",
+=======
+    "material-ui-phone-number": "^2.2.6",
+>>>>>>> 669a6c56593f0f720edbfad972a4b99d23227dd2
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
