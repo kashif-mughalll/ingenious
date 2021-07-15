@@ -22,3 +22,9 @@ html{
   justify-content: center;
   flex-flow: column;
 }
+
+.flex2{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}

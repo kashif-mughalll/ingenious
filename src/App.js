@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar/Navbar';
 import { connect } from 'react-redux';
 import Dashboard from './Pages/DashBoard/Dashboard';
 import AuthPage from './Pages/AuthPage/AuthPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
 
 var App = ({Auth})=> {
   return (
