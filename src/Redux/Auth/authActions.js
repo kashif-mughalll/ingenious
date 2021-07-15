@@ -26,6 +26,7 @@ export var SignInWithGoogle = () => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+
 }
 
 
