@@ -1,9 +1,12 @@
 import { Button, Icon, withStyles } from "@material-ui/core"
 import { useStyles } from "./ButtonGoogle.style";
+import { connect } from 'react-redux';
+import { SignInWithGoogle } from './../../Redux/Auth/authActions';
 
-const ButtonGoogleLogin = ({classes}) => {
+const ButtonGoogleLogin = ({classes,SignInWithGoogle}) => {
     return(
         <Button
+          onClick={SignInWithGoogle}
           variant="outlined"
           color="primary"
           fullWidth 
@@ -14,4 +17,9 @@ const ButtonGoogleLogin = ({classes}) => {
         </Button>
     )
 }
-export default withStyles(useStyles)(ButtonGoogleLogin);
+
+const actions = {
+  SignInWithGoogle
+}
+
+export default connect(null,actions)(withStyles(useStyles)(ButtonGoogleLogin));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,8 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-const LoginForm = ({ classes, toggleForm }) => {
+const LoginForm = ({ classes, toggleHandler }) => {
+  const Divref = useRef(null);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -31,8 +32,8 @@ const LoginForm = ({ classes, toggleForm }) => {
     },
   });
   return (
-    <div className={classes.form}>
-      <h1 className={classes.heading + " " + classes.marginBottom1}>Login</h1>
+    <div ref={Divref} className={classes.form}>
+      <h1 className={classes.heading + " " + classes.marginBottom12}>Login</h1>
       <form onSubmit={formik.handleSubmit} className="size">
         <TextField
           variant="outlined"
@@ -42,7 +43,7 @@ const LoginForm = ({ classes, toggleForm }) => {
               input: classes.resize,
             },
           }}
-          size="normal"
+          // size="normal"
           fullWidth
           autoFocus
           id="email"
@@ -74,7 +75,7 @@ const LoginForm = ({ classes, toggleForm }) => {
         <ButtonGoogleLogin />
         <div className={classes.btnContainer}>
           <Button
-            className={classes.btn}
+            className={classes.btn + " " + classes.marginright}
             color="primary"
             variant="contained"
             fullWidth
@@ -87,9 +88,15 @@ const LoginForm = ({ classes, toggleForm }) => {
             color="primary"
             variant="contained"
             fullWidth
-            onClick={toggleForm}
+            onClick={() => {
+              Divref.current.classList.add("fade-out");
+              Divref.current.classList.remove("fade-in");
+              setTimeout(() => {
+                toggleHandler();
+              }, 600);
+            }}
           >
-            Sign Up
+            Create new account
           </Button>
         </div>
       </form>
