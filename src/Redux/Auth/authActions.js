@@ -58,7 +58,7 @@ export var SignUpWithEmailPass =
 
       dispatch({
         type: "SET_USER",
-        payload: profile,
+        payload: profile
       });
     } catch (error) {
       if (error.code == "auth/email-already-in-use") SetError(true);
@@ -69,9 +69,25 @@ export var LoginWithEmailPass =
   (Email, Password, setError, setError2) => async (dispatch) => {
     try {
       var user = await auth.signInWithEmailAndPassword(Email, Password);
+      var Data = await DB.collection("Users").doc(user.user.uid).get();
+      if (Data.exists) {
+        if (Data.data().title) {
+          dispatch({
+            type: "SET_PROFILE",
+            payload: Data.data(),
+          });
 
-      console.log(user)
-
+          dispatch({
+            type: "SET_USER",
+            payload: Data.data(),
+          });
+        } else {
+          dispatch({
+            type: "SET_USER",
+            payload: Data.data(),
+          });
+        }
+      }
     } catch (error) {
       console.error(error);
       if (error.code == "auth/user-not-found") setError(true);

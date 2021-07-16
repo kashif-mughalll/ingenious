@@ -47,7 +47,7 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
           InputProps={{
             classes: {
               input: classes.resize,
-            },
+            }
           }}
           fullWidth
           autoFocus
