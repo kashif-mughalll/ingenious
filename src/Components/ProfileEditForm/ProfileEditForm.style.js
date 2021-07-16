@@ -1,6 +1,8 @@
 export const style = ()=> ({
   inputClass : {
-    fontSize : "1.2rem"
+    fontSize : "1.5rem",
+    lineHeight : "2rem",
+    boxSizing : "border-box"
   },
   marginClass : {
     margin : "1rem 0"

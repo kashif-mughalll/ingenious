@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useState,useRef} from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -7,6 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { useStyles } from "./form.style";
 import ButtonGoogleLogin from "../ButtonGoogleLogin/ButtonGoogleLogin";
 import { Grid } from "@material-ui/core";
+import { SignUpWithEmailPass } from "../../Redux/Auth/authActions";
+import { connect } from 'react-redux';
 
 const validationSchema = yup.object({
   firstname: yup
@@ -27,9 +29,10 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-const LoginForm = ({ classes, toggleHandler }) => {
+const LoginForm = ({ classes, toggleHandler , SignUpWithEmailPass }) => {
 
   const Divref = useRef(null)
+  const [Error, setError] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -39,9 +42,8 @@ const LoginForm = ({ classes, toggleHandler }) => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values);
+    onSubmit: ({firstname,lastname,email,password}) => {      
+      SignUpWithEmailPass(firstname + " " + lastname,email,password,setError);
     },
   });
   return (
@@ -115,9 +117,9 @@ const LoginForm = ({ classes, toggleHandler }) => {
               name="email"
               label="Email"
               value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
+              onChange={(e)=>{ setError(false); formik.handleChange(e)}}
+              error={(formik.touched.email && Boolean(formik.errors.email)) || Error}
+              helperText={Error ? 'Email already exists' : formik.touched.email && formik.errors.email}
             />
           </Grid>
           <Grid item xs={12}>
@@ -172,4 +174,9 @@ const LoginForm = ({ classes, toggleHandler }) => {
     </div>
   );
 };
-export default withStyles(useStyles)(LoginForm);
+
+const actions = {
+  SignUpWithEmailPass
+}
+
+export default connect(null,actions)(withStyles(useStyles)(LoginForm));
