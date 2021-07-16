@@ -10,7 +10,7 @@ import './MediaQuery/MediaQuery.css'
 
 var App = ({Auth})=> {
   return (
-     false ? <Dashboard/> : <AuthPage/>
+    Auth ? <Dashboard/> : <AuthPage/>
   );
 }
 
