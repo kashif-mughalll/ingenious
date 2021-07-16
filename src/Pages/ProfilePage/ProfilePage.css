@@ -1,5 +1,5 @@
 .profile-page-container{
-    width: 100vw;
+    width: 100%;
     height: max-content;
 }
 
@@ -17,7 +17,6 @@
 }
 
 .profile-page-container3{
-    box-sizing: border-box;
     padding: 2rem;
     display: grid;
     grid-template-columns: 18rem 1fr;

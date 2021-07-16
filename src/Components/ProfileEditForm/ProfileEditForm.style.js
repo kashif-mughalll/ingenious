@@ -24,5 +24,5 @@ export const style = ()=> ({
   },
   margintop : {
     marginTop : "2rem",
-  }
+  },
 });

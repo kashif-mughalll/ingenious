@@ -1,9 +1,6 @@
 .profile-page-form-container{
     padding-left: 2rem;
-    box-sizing: border-box;
     width: 50rem;
-    /* height: 150vh; */
-    box-sizing: border-box;
 }
 
 .profile-page-heaing2{
@@ -21,7 +18,10 @@
     margin-bottom: 4rem;
     background-color: rgb(0, 62, 155);
     align-self: center;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     border-radius: 0.5rem;
-    box-sizing: border-box;
+}
+.submit-profile-btn:hover{
+    cursor: pointer;
+    background-color: rgb(0, 45, 112);
 }
