@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import Dashboard from './Pages/DashBoard/Dashboard';
 import AuthPage from './Pages/AuthPage/AuthPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import './MediaQuery/MediaQuery.css'
 
 var App = ({Auth})=> {
   return (
-     false ? <Dashboard/> : <AuthPage/>
+    Auth ? <Dashboard/> : <AuthPage/>
   );
 }
 
