@@ -9,7 +9,7 @@ import Logo from '../../Assests/Logo.png'
 import Footer from '../../Components/Footer/Footer'
 
 var AuthPage = ({ Auth, SignInWithGoogle }) => {
-  const [ToogleForms, setToogleForms] = useState(false);
+  const [ToogleForms, setToogleForms] = useState(true);
 
   let ToogleFormsFunc = () => {
     setToogleForms(!ToogleForms);

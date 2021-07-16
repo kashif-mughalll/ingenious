@@ -8,15 +8,16 @@ import AuthPage from './Pages/AuthPage/AuthPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import './MediaQuery/MediaQuery.css'
 
-var App = ({Auth})=> {
+var App = ({Auth,Profile})=> {
   return (
-    Auth ? <Dashboard/> : <AuthPage/>
+    Auth ? (Profile ? <Dashboard/> : <ProfilePage/>) : <AuthPage/>
   );
 }
 
 const mapState = (state) => {
   return {
-    Auth : state.Auth
+    Auth : state.Auth,
+    Profile : state.Profile
   }
 }
 

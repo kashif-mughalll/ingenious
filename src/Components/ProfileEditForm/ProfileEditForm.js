@@ -1,28 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProfileEditForm.css";
 import TextField from "@material-ui/core/TextField";
-import { withStyles } from "@material-ui/core";
+import { FormControl, withStyles } from "@material-ui/core";
 import { style } from "./ProfileEditForm.style";
 import MaterialUiPhoneNumber from "material-ui-phone-number";
 
-var ProfileEditForm = ({ classes }) => {
+var ProfileEditForm = ({
+  classes,
+  name,
+  email,
+  phone,
+  dob,
+  jobTitle,
+  about,
+  picture
+}) => {
+  const [FullName, setFullName] = useState(name ? name : "");
+  const [Email, setEmail] = useState(email ? email : "");
+  const [Phone, setPhone] = useState(phone ? phone : "");
+  const [Dob, setDob] = useState(dob ? dob : "1999-11-11");
+  const [JobTitle, setJobTitle] = useState(jobTitle ? jobTitle : "");
+  const [About, setAbout] = useState(about ? about : "");
+  const [KeyWords, setKeyWords] = useState([]);
+
   return (
     <div className="profile-page-form-container">
       <p className="profile-page-heaing2">Personal Information</p>
-      <TextField fullWidth InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass} required id="standard-required" label="full name" value="hello"/>
-      <TextField fullWidth InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass} label="Email" value="123@gmail.com" disabled/>
-      <MaterialUiPhoneNumber fullWidth defaultCountry={'pk'} InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass} label="Phone number" />
-      <TextField fullWidth InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass2} id="date" label="Birthday" type="date" defaultValue="1999-11-11" InputLabelProps={{ shrink: true }}/>
-      
-      
+      <FormControl fullWidth>
+      <TextField
+        onChange={(e) => setFullName(e.target.value)}
+        InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+        fullWidth
+        InputProps={{ classes: { input: classes.inputClass } }}
+        className={classes.marginClass}
+        required
+        id="standard-required"
+        label="full name"
+        value={FullName}
+      />
+      <TextField
+        onChange={(e) => setEmail(e.target.value)}
+        InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+        fullWidth
+        InputProps={{ classes: { input: classes.inputClass } }}
+        label="Email"
+        value={Email}
+        className={classes.marginClass}
+        disabled
+      />
+      <div className="given-margin">
+        <MaterialUiPhoneNumber
+          onChange={(e) => setPhone(e)}
+          InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+          defaultCountry={"pk"}
+          InputProps={{ classes: { input: classes.inputClass } }}
+          // className={classes.marginClass}
+          label="Phone number"
+          value={Phone}
+          fullWidth
+        />
+      </div>
 
-      
-      
-
-
-      <TextField fullWidth InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass} required id="standard-required" label="Job title" value="Software Eng"/>
-      <TextField InputProps={{ classes: { input: classes.inputClass } }} className={classes.marginClass3} required id="outlined-multiline-static" label="About" multiline rows={8} defaultValue="Default Value" variant="outlined" fullWidth/>
-      
+      <TextField
+        onChange={(e) => setDob(e.target.value)}
+        InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+        fullWidth
+        InputProps={{ classes: { input: classes.inputClass } }}
+        className={classes.marginClass2}
+        id="date"
+        label="Date of birth"
+        type="date"
+        defaultValue={Dob}
+        InputLabelProps={{ shrink: true }}
+      />
+      <p className="profile-page-heaing2">Professional Information</p>
+      <TextField
+        onChange={(e) => setJobTitle(e.target.value)}
+        InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+        fullWidth
+        InputProps={{ classes: { input: classes.inputClass } }}
+        className={classes.marginClass}
+        required
+        id="standard-required"
+        label="Job title"
+        value={JobTitle}
+      />
+      <TextField
+        onChange={(e) => setAbout(e.target.value)}
+        InputLabelProps={{ style: { fontSize: "1.5rem" } }}
+        InputProps={{ classes: { input: classes.lineHeight } }}
+        className={classes.marginClass3}
+        required
+        id="outlined-multiline-static"
+        label="About"
+        multiline
+        rows={7}
+        value={About}
+        variant="outlined"
+        fullWidth
+      />
+      </FormControl>
+      <button className="submit-profile-btn">Confirm Edits</button>
     </div>
   );
 };
