@@ -17,7 +17,7 @@ var ProfilePage = ({Auth})=> {
                             <button className="edit-profile-btn"> <i className="fas fa-user-edit"></i> Edit</button>
                         </div>
                     </div>
-                    <ProfileEditForm picture={Auth ? Auth.picture : null} name={Auth ? Auth.name : ''} email={Auth ? Auth.email : ''}/>
+                    <ProfileEditForm id={Auth ? Auth.id : ''} picture={Auth ? Auth.picture : null} name={Auth ? Auth.name : ''} email={Auth ? Auth.email : ''}/>
                 </div>
                 <div></div>
             </div>
