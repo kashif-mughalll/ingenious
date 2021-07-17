@@ -4,19 +4,10 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 import CheckBox from "../CheckBox/CheckBox";
-import { useStyles } from "../Test/domainSelector.style";
+import { useStyles } from "./domainSelector.style";
 
-const DomainSelector = ({ classes }) => {
-  const [data, setData] = useState({
-    dev: false,
-    des: false,
-    acc: false,
-    mang: false,
-    ceo: false,
-    elect: false,
-    mech: false,
-  });
-  let temp = Object.entries(data);
+const DomainSelector = ({ classes, keyWords, setKeyWords }) => {
+  let temp = Object.entries(keyWords);
   return (
     <div className={classes.container}>
       <FormControl className={classes.checkGroup} component="fieldset">
@@ -25,8 +16,8 @@ const DomainSelector = ({ classes }) => {
             name={name}
             checked={checked}
             handleChange={(e) => {
-              setData({
-                ...data,
+              setKeyWords({
+                ...keyWords,
                 [e.target.name]: e.target.checked,
               });
             }}

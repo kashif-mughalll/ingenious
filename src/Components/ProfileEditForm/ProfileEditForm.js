@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./ProfileEditForm.css";
 import TextField from "@material-ui/core/TextField";
-import { FormControl, withStyles } from "@material-ui/core";
+import { Button, FormControl, withStyles } from "@material-ui/core";
 import { style } from "./ProfileEditForm.style";
 import MaterialUiPhoneNumber from "material-ui-phone-number";
+import DomainSelector from './../DomainSelector/DomainSelector';
 
 var ProfileEditForm = ({
   classes,
@@ -21,7 +22,15 @@ var ProfileEditForm = ({
   const [Dob, setDob] = useState(dob ? dob : "1999-11-11");
   const [JobTitle, setJobTitle] = useState(jobTitle ? jobTitle : "");
   const [About, setAbout] = useState(about ? about : "");
-  const [KeyWords, setKeyWords] = useState([]);
+  const [KeyWords, setKeyWords] = useState({
+    development: false,
+    designing: false,
+    accounts: false,
+    mangement: false,
+    aeronotical: false,
+    electrical: false,
+    mechanical: false,
+  });
 
   return (
     <div className="profile-page-form-container">
@@ -99,6 +108,8 @@ var ProfileEditForm = ({
         variant="outlined"
         fullWidth
       />
+      <p className="profile-page-heaing2">Your Interests</p>
+      <DomainSelector keyWords={KeyWords} setKeyWords={setKeyWords} />
       </FormControl>
       <button className="submit-profile-btn">Confirm Edits</button>
     </div>
