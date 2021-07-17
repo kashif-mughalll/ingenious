@@ -91,7 +91,7 @@ export var LoginWithEmailPass =
     } catch (error) {
       console.error(error);
       if (error.code == "auth/user-not-found") setError(true);
-      if (error.code == "auth/wrong-password") setError(true);
+      if (error.code == "auth/wrong-password") setError2(true);
     }
   };
 

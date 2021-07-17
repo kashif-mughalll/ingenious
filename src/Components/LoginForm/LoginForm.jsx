@@ -21,7 +21,6 @@ const validationSchema = yup.object({
 });
 
 const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
-
   const [Error, setError] = useState(false);
   const [Error2, setError2] = useState(false);
   const Divref = useRef(null);
