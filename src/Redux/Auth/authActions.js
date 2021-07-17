@@ -14,6 +14,8 @@ export var SignInWithGoogle = () => async (dispatch) => {
       picture: user.additionalUserInfo.profile.picture,
     };
 
+    // localStorage.setItem("Auth",JSON.stringify(UserInfo))
+
     var Data = await DB.collection("Users").doc(user.user.uid).get();
     if (Data.exists) {
       if (Data.data().title) {
@@ -53,6 +55,8 @@ export var SignUpWithEmailPass =
         email: Email,
         picture: null,
       };
+
+      // localStorage.setItem("Auth",JSON.stringify(profile))
 
       await DB.collection("Users").doc(user.user.uid).set(profile);
 
