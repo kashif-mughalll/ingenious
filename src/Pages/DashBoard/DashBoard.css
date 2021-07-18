@@ -1,13 +1,10 @@
 .dashboard{
     width: 100%;
     min-height: 100vh;
+    background-color:#eee;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(2rem,1fr) 90rem minmax(2rem,1fr);
-}
-
-#root{
-    background-color:#eee;
 }
 
 .dashboard-center{
