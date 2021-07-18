@@ -77,7 +77,7 @@ var Navbar = ({ picture }) => {
 
 const mapState = (state) => {
   return {
-    picture: state.Auth.picture,
+    picture: state.Profile.picture,
   };
 };
 
