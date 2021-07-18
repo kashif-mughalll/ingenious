@@ -4,7 +4,7 @@
   border: 0;
   font-family: "Roboto";
   outline: none;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 html {
@@ -12,7 +12,8 @@ html {
 }
 
 .color{
-  color : rgb(0, 62, 155)
+  color : rgb(0, 62, 155);
+  color : rgb(160, 76, 76)
 }
 
 .flex {
