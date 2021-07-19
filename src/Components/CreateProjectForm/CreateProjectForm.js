@@ -6,6 +6,8 @@ import { style } from "./CreateProjectForm.style";
 import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
+import { v4 as Uuid } from 'uuid';
+import { PostMyProject } from './../../Redux/PostedProjects/PostedProjectsAction';
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -15,15 +17,12 @@ var FilterKeyWorkds = (KeyWords) => {
   return Arr;
 };
 
-var CreateProjectForm = ({ classes }) => {
+var CreateProjectForm = ({ classes ,auth,PostMyProject }) => {
   const [ProjectTitle, setProjectTitle] = useState("");
   const [ProjectDescription, setProjectDescription] = useState("");
-  const [StaringDate, setStaringDate] = useState("");
+  const [StaringDate, setStaringDate] = useState(new Date().toISOString().slice(0, 10));
   const [EndingDate, setEndingDate] = useState("");
-  const [Location, setLocation] = useState({
-    country: "pakistan",
-    region: "Sindh",
-  });
+  const [Location, setLocation] = useState("Pakistan");
 
   const [KeyWords, setKeyWords] = useState({
     development: false,
@@ -42,42 +41,33 @@ var CreateProjectForm = ({ classes }) => {
   });
 
   // Error States
-  const [NameError, setNameError] = useState(false);
-  const [PhoneError, setPhoneError] = useState(false);
-  const [DobError, setDobError] = useState(false);
-  const [JobTitleError, setJobTitleError] = useState(false);
+
+  const [ProjectTitleError, setProjectTitleError] = useState(false);
+  const [ProjectDescriptionError, setProjectDescriptionError] = useState(false);
+  const [EndingDateError, setEndingDateError] = useState(false);
   const [KeyWordsError, setKeyWordsError] = useState(false);
 
   //Validations
 
-  //   const FormValidation = () => {
-  //     if (FullName == "" || !FullName) setNameError(true)
-  //     else if (String(Phone).length != 15) setPhoneError(true)
-  //     else if (Dob == "") setDobError(true)
-  //     else if (JobTitle == "" || !JobTitle) setJobTitleError(true)
-  //     else if (FilterKeyWorkds(KeyWords).length == 0) setKeyWordsError(true)
-  //     else if (
-  //       !NameError &&
-  //       !KeyWordsError &&
-  //       !JobTitleError &&
-  //       !DobError &&
-  //       !PhoneError
-  //     ) {
-  //       var profile = {
-  //         keywords: FilterKeyWorkds(KeyWords),
-  //         contact: Phone,
-  //         description: About,
-  //         title: JobTitle,
-  //         dob: Dob,
-  //         name: FullName,
-  //         email,
-  //         Email,
-  //         picture: picture,
-  //         id: id,
-  //       };
-  //     //   SetProfile(profile);
-  //     }
-  //   };
+  const FormValidation = () => {
+    if (ProjectTitle == "" || !ProjectTitle) setProjectTitleError(true);
+    else if (ProjectDescription == "" || !ProjectDescription)setProjectDescriptionError(true);
+    else if (EndingDate == "") setEndingDateError(true);
+    else if (FilterKeyWorkds(KeyWords).length == 0) setKeyWordsError(true);
+    else {
+        var Obj = {
+            id : Uuid(),
+            postedAt : (new Date()).toDateString(),
+            postedBy : auth,
+            title : ProjectTitle,
+            description : ProjectDescription,
+            keywords : FilterKeyWorkds(KeyWords),
+            duration : StaringDate + " To " + EndingDate,
+            location : Location
+        }
+        PostMyProject(Obj);
+    }
+  };
 
   return (
     <div className={classes.container1}>
@@ -85,8 +75,8 @@ var CreateProjectForm = ({ classes }) => {
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
           onChange={(e) => {
-            setJobTitleError(false);
             setProjectTitle(e.target.value);
+            setProjectTitleError(false);
           }}
           InputLabelProps={{ style: { fontSize: "1.5rem" } }}
           fullWidth
@@ -95,60 +85,59 @@ var CreateProjectForm = ({ classes }) => {
           id="standard-required"
           label="project title"
           value={ProjectTitle}
-          error={JobTitleError}
-          helperText={JobTitleError ? "Title required *" : ""}
+          error={ProjectTitleError}
+          helperText={ProjectTitleError ? "Title required *" : ""}
         />
         <TextField
-          onChange={(e) => setProjectDescription(e.target.value)}
+          onChange={(e) => {
+            setProjectDescription(e.target.value);
+            setProjectDescriptionError(false);
+          }}
           InputLabelProps={{ style: { fontSize: "1.5rem" } }}
           InputProps={{ classes: { input: classes.lineHeight } }}
           className={classes.marginClass3}
           id="outlined-multiline-static"
           label="Description"
           multiline
-          rows={9}
+          rows={10}
           value={ProjectDescription}
           variant="outlined"
           fullWidth
+          error={ProjectDescriptionError}
+          helperText={ProjectDescriptionError ? "Description required" : ""}
         />
-
-          <CountryRegionSelector location={Location} setLocation={setLocation}/>
-
-
+        <CountryRegionSelector country={Location} setCountry={setLocation} />
         <div className="flex">
           <TextField
             onChange={(e) => {
-              setDobError(false);
-              //   setDob(e.target.value);
+              setStaringDate(e.target.value);
             }}
             InputLabelProps={{ style: { fontSize: "1.5rem" } }}
             fullWidth
             InputProps={{ classes: { input: classes.inputClass } }}
             className={classes.marginClass22}
             id="date"
-            label="Date of birth"
+            label="Project Starting Date"
             type="date"
-            defaultValue={""}
+            defaultValue={StaringDate}
             InputLabelProps={{ shrink: true }}
-            error={DobError}
-            helperText={DobError ? "Select birth date" : ""}
           />
           <TextField
             onChange={(e) => {
-              setDobError(false);
-              //   setDob(e.target.value);
+              setEndingDateError(false);
+              setEndingDate(e.target.value);
             }}
             InputLabelProps={{ style: { fontSize: "1.5rem" } }}
             fullWidth
             InputProps={{ classes: { input: classes.inputClass } }}
             className={classes.marginClass2}
             id="date"
-            label="Date of birth"
+            label="Expected Ending Date"
             type="date"
-            defaultValue={""}
+            defaultValue={EndingDate}
             InputLabelProps={{ shrink: true }}
-            error={DobError}
-            helperText={DobError ? "Select birth date" : ""}
+            error={EndingDateError}
+            helperText={EndingDateError ? "Ending date is required" : ""}
           />
         </div>
 
@@ -162,13 +151,26 @@ var CreateProjectForm = ({ classes }) => {
           <p className="error-21">Please select alteast one</p>
         ) : null}
       </FormControl>
-      <button className="submit-profile-btn" onClick={"FormValidation"}>
+      <button className="submit-profile-btn" onClick={FormValidation}>
         Confirm Edits
       </button>
     </div>
   );
 };
 
-var actions = {};
+const mapState = (state) => {
+    const auth = {
+        id : state.Auth.id,
+        picture : state.Auth.picture,
+        name : state.Auth.name,
+    }
+    return {
+        auth : auth,
+    }
+}
 
-export default connect(null, actions)(withStyles(style)(CreateProjectForm));
+var actions = {
+    PostMyProject
+};
+
+export default connect(mapState, actions)(withStyles(style)(CreateProjectForm));

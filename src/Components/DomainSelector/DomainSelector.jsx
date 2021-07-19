@@ -8,6 +8,7 @@ const DomainSelector = ({
   classes,
   keyWords,
   setKeyWords,
+  setKeyWordsError
 }) => {
   let temp = Object.entries(keyWords);
   return (
@@ -18,7 +19,7 @@ const DomainSelector = ({
             name={name}
             checked={checked}
             handleChange={(e) => {
-              console.log(e.target.innerText);
+              setKeyWordsError(false);
               setKeyWords({
                 ...keyWords,
                 [e.target.innerText]: !checked,
