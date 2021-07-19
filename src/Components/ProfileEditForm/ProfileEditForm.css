@@ -25,3 +25,9 @@
     cursor: pointer;
     background-color: rgb(0, 45, 112);
 }
+
+.error-21{
+    color: red;
+    font-size: 1.3rem;
+    margin: 0.3rem 2px;
+}

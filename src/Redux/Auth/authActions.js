@@ -14,6 +14,8 @@ export var SignInWithGoogle = () => async (dispatch) => {
       picture: user.additionalUserInfo.profile.picture,
     };
 
+    // localStorage.setItem("Auth",JSON.stringify(UserInfo))
+
     var Data = await DB.collection("Users").doc(user.user.uid).get();
     if (Data.exists) {
       if (Data.data().title) {
@@ -54,6 +56,8 @@ export var SignUpWithEmailPass =
         picture: null,
       };
 
+      // localStorage.setItem("Auth",JSON.stringify(profile))
+
       await DB.collection("Users").doc(user.user.uid).set(profile);
 
       dispatch({
@@ -91,7 +95,7 @@ export var LoginWithEmailPass =
     } catch (error) {
       console.error(error);
       if (error.code == "auth/user-not-found") setError(true);
-      if (error.code == "auth/wrong-password") setError(true);
+      if (error.code == "auth/wrong-password") setError2(true);
     }
   };
 

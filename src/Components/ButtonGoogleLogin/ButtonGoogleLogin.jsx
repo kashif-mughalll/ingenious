@@ -11,7 +11,7 @@ const ButtonGoogleLogin = ({classes,SignInWithGoogle}) => {
           color="primary"
           fullWidth 
           className={classes.googleButton}
-          startIcon={<Icon>send</Icon>}
+          startIcon={<i className="fab fa-google-plus-g" style={{color: 'rgb(160, 76, 76)'}}></i>}
         >
           Login With Google
         </Button>
