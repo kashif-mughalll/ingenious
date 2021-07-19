@@ -8,8 +8,7 @@ import PostCard from './Components/PostCard/PostCard';
 
 var App = ({Auth,Profile})=> {
   return (
-    // Auth ? (Profile ? <Dashboard/> : <ProfilePage/>) : <AuthPage/>
-    <PostCard />
+    Auth ? (Profile ? <Dashboard/> : <ProfilePage/>) : <AuthPage/>
   );
 }
 

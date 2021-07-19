@@ -1,13 +1,11 @@
 export const useStyles = () => ({
-    container1: {
-        width: '88rem',
-        backgroundColor: '#bbb',
-        height: '70rem',
-    },
     container: {
         width: '100%',
         backgroundColor: '#fff',
-        borderRadius: '0.5rem'
+        borderRadius: '0.5rem',
+        margin: '2rem 0',
+        // boxShadow: '0px 0px 10px -5px black',
+        border: '0.1rem solid #bbb'
     },
     header: {
         width: '100%',
@@ -33,13 +31,15 @@ export const useStyles = () => ({
         alignItems: 'center',
         fontSize: '1.6rem',
         borderTop: '0.1rem solid #bbb',
+        opacity: '0.8',
         '& i': {
             paddingRight: '0.5rem',
             fontSize: '2rem'
         },
         '& > div:hover': {
             color: 'rgb(0, 62, 155)',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            opacity: '1',
         }
     },
     author: {
@@ -88,7 +88,7 @@ export const useStyles = () => ({
         fontSize: '1.2rem',
         color: '#666',
         '& b': {
-            color: 'rgb(0, 62, 155)'
+            color: 'rgb(70, 120, 200)',
         }
     },
     projectTitle: {
