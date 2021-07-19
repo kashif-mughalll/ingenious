@@ -5,6 +5,7 @@ import { FormControl, withStyles } from "@material-ui/core";
 import { style } from "./CreateProjectForm.style";
 import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
+import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -17,6 +18,12 @@ var FilterKeyWorkds = (KeyWords) => {
 var CreateProjectForm = ({ classes }) => {
   const [ProjectTitle, setProjectTitle] = useState("");
   const [ProjectDescription, setProjectDescription] = useState("");
+  const [StaringDate, setStaringDate] = useState("");
+  const [EndingDate, setEndingDate] = useState("");
+  const [Location, setLocation] = useState({
+    country: "pakistan",
+    region: "Sindh",
+  });
 
   const [KeyWords, setKeyWords] = useState({
     development: false,
@@ -104,6 +111,9 @@ var CreateProjectForm = ({ classes }) => {
           variant="outlined"
           fullWidth
         />
+
+          <CountryRegionSelector location={Location} setLocation={setLocation}/>
+
 
         <div className="flex">
           <TextField
