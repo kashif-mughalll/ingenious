@@ -12,7 +12,7 @@ export const useStyles = () => ({
   },
   focus: {
       '&:focus': {
-          backgroundColor: 'blue',
+        backgroundColor: 'blue',
           color:'white'
       }
   }

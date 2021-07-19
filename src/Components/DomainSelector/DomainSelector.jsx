@@ -8,7 +8,6 @@ const DomainSelector = ({
   classes,
   keyWords,
   setKeyWords,
-  setKeyWordsError,
 }) => {
   let temp = Object.entries(keyWords);
   return (

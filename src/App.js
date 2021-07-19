@@ -4,6 +4,7 @@ import Dashboard from './Pages/DashBoard/Dashboard';
 import AuthPage from './Pages/AuthPage/AuthPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import './MediaQuery/MediaQuery.css'
+import PostCard from './Components/PostCard/PostCard';
 
 var App = ({Auth,Profile})=> {
   return (
