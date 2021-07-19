@@ -15,6 +15,7 @@ export const useStyles = () => ({
     padding: "1.5rem",
     justifyContent: "space-between",
     flexWrap: "wrap",
+    boxSizing: 'border-box',
     "&::after": {
       content: '""',
       flex: "auto",

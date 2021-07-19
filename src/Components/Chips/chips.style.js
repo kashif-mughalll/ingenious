@@ -10,4 +10,10 @@ export const useStyles = () => ({
   label: {
     fontSize: "1.2rem",
   },
+  focus: {
+      '&:focus': {
+          backgroundColor: 'blue',
+          color:'white'
+      }
+  }
 });
