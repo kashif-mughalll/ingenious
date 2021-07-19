@@ -1,5 +1,7 @@
 import { withStyles, FormControl } from "@material-ui/core";
+import { useState } from "react";
 import CheckBox from "../CheckBox/CheckBox";
+import Chips from "../Chips/Chips";
 import { useStyles } from "./domainSelector.style";
 
 const DomainSelector = ({
@@ -11,20 +13,16 @@ const DomainSelector = ({
   let temp = Object.entries(keyWords);
   return (
     <div className={classes.container}>
-      <FormControl
-        className={classes.checkGroup}
-        component="fieldset"
-      >
+      <FormControl className={classes.checkGroup} component="fieldset">
         {temp.map(([name, checked]) => (
-          <CheckBox
-            key={name + Math.random(100)}
+          <Chips
             name={name}
             checked={checked}
             handleChange={(e) => {
-              setKeyWordsError(false);
+              console.log(e.target.innerText);
               setKeyWords({
                 ...keyWords,
-                [e.target.name]: e.target.checked,
+                [e.target.innerText]: !checked,
               });
             }}
           />
