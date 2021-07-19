@@ -4,9 +4,11 @@ import Logo from "../../Assests/LogoOnly.png";
 import SerachBarNav from "./SerachBarNav/SerachBarNav";
 import NavigationBtn from "./NavigationBtn/NavigationBtn";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-var Navbar = ({ picture }) => {
-  const [state, setState] = useState("home");
+var Navbar = ({picture,location}) => {
+  var token = String(location.pathname).split('/');
+  const [state, setState] = useState(token[1] ? token[1] : 'home');
 
   return (
     <div className="navbar">
@@ -29,8 +31,8 @@ var Navbar = ({ picture }) => {
               state={state}
               setState={setState}
               iconClass="fas fa-desktop"
-              name="project"
-              link="/projects"
+              name="projects"
+              link="/projects/myprojects"
             />
             <NavigationBtn
               state={state}
@@ -81,4 +83,4 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(Navbar);
+export default withRouter(connect(mapState)(Navbar));
