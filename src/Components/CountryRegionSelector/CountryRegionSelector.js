@@ -5,18 +5,18 @@ import {
   RegionDropdown,
 } from "react-country-region-selector-material-ui-new";
 
-var CountryRegionSelector = ({ location, setLocation }) => {
+var CountryRegionSelector = ({ country, setCountry }) => {
   return (
     <div>
       <CountryDropdown classname="CountryRegionSelector"
-        value={location.country}
-        onChange={(val) => setLocation({...location,country : val})}
+        value={country}
+        onChange={(val) => setCountry(val)}
       />
-      <RegionDropdown
+      {/* <RegionDropdown
         country={location.country}
-        value={location.region}
+        value={"Sindh"}
         onChange={(val) => setLocation({...location,region : val})}
-      />
+      /> */}
     </div>
   );
 };
