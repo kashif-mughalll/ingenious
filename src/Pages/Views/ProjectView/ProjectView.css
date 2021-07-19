@@ -2,3 +2,8 @@
     box-sizing: border-box;
     width: 100%;
 }
+
+.project-router-btns{
+    display: flex;
+    margin-bottom: 3rem;
+}
