@@ -1,0 +1,18 @@
+.project-view-btn-style{
+    font-size: 1.4rem;
+    color: #888;
+    margin: 1rem;
+    margin-right: 2rem;
+    text-decoration: none;
+    padding-bottom: 0.4rem;
+    font-weight: 400;
+}
+
+.project-view-btn-style:hover{
+    color: blue;
+}
+
+.project-view-btn-style-border{
+    border-bottom: 2px solid blue;
+    color: blue;
+}
