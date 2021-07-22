@@ -23,3 +23,13 @@ var profile = {
   title: "Web Developer",
   ...Auth,
 };
+
+
+// useEffect(async () => {
+//   const Arr = await DB.collection('Projects').where('postedBy.id', "==" ,'w2ydAVYwXefQ68LXlugmDPy4S4I3').get();
+  
+//   Arr.forEach((doc) => {
+//     console.log(doc.id, " => ", doc.data());
+//   });
+  
+// }, []);

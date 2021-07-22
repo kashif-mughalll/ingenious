@@ -14,3 +14,18 @@ export var PostMyProject = (project) => async (dispatch, getState) => {
     console.log(error);
   }
 };
+
+export var GetMyProjects = () => async (dispatch, getState) => {
+  try {
+    let MyProjects = [];
+    let id = getState().Auth.id ? getState().Auth.id : ''; // person not authenticated
+    let response = await DB.collection("Projects").where("postedBy.id" , "==" , id).get();
+    response.forEach((doc) => MyProjects.push(doc.data()));
+    dispatch({
+      type: "SET_POSTED_PROJECTS",
+      payload: MyProjects,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

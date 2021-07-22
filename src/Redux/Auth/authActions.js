@@ -14,8 +14,6 @@ export var SignInWithGoogle = () => async (dispatch) => {
       picture: user.additionalUserInfo.profile.picture,
     };
 
-    // localStorage.setItem("Auth",JSON.stringify(UserInfo))
-
     var Data = await DB.collection("Users").doc(user.user.uid).get();
     if (Data.exists) {
       if (Data.data().title) {
