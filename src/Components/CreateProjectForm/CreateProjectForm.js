@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CreateProjectForm.css";
 import TextField from "@material-ui/core/TextField";
 import { FormControl, withStyles } from "@material-ui/core";
@@ -6,8 +6,8 @@ import { style } from "./CreateProjectForm.style";
 import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
-import { v4 as Uuid } from 'uuid';
-import { PostMyProject } from './../../Redux/PostedProjects/PostedProjectsAction';
+import { v4 as Uuid } from "uuid";
+import { PostMyProject } from "./../../Redux/PostedProjects/PostedProjectsAction";
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -17,10 +17,12 @@ var FilterKeyWorkds = (KeyWords) => {
   return Arr;
 };
 
-var CreateProjectForm = ({ classes ,auth,PostMyProject }) => {
+var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
   const [ProjectTitle, setProjectTitle] = useState("");
   const [ProjectDescription, setProjectDescription] = useState("");
-  const [StaringDate, setStaringDate] = useState(new Date().toISOString().slice(0, 10));
+  const [StaringDate, setStaringDate] = useState(
+    new Date().toISOString().slice(0, 10)
+  );
   const [EndingDate, setEndingDate] = useState("");
   const [Location, setLocation] = useState("Pakistan");
 
@@ -51,21 +53,22 @@ var CreateProjectForm = ({ classes ,auth,PostMyProject }) => {
 
   const FormValidation = () => {
     if (ProjectTitle == "" || !ProjectTitle) setProjectTitleError(true);
-    else if (ProjectDescription == "" || !ProjectDescription)setProjectDescriptionError(true);
+    else if (ProjectDescription == "" || !ProjectDescription)
+      setProjectDescriptionError(true);
     else if (EndingDate == "") setEndingDateError(true);
     else if (FilterKeyWorkds(KeyWords).length == 0) setKeyWordsError(true);
     else {
-        var Obj = {
-            id : Uuid(),
-            postedAt : (new Date()).toDateString(),
-            postedBy : auth,
-            title : ProjectTitle,
-            description : ProjectDescription,
-            keywords : FilterKeyWorkds(KeyWords),
-            duration : StaringDate + " To " + EndingDate,
-            location : Location
-        }
-        PostMyProject(Obj);
+      var Obj = {
+        id: Uuid(),
+        postedAt: new Date().toDateString(),
+        postedBy: auth,
+        title: ProjectTitle,
+        description: ProjectDescription,
+        keywords: FilterKeyWorkds(KeyWords),
+        duration: StaringDate + " To " + EndingDate,
+        location: Location,
+      };
+      PostMyProject(Obj);
     }
   };
 
@@ -159,18 +162,18 @@ var CreateProjectForm = ({ classes ,auth,PostMyProject }) => {
 };
 
 const mapState = (state) => {
-    const auth = {
-        id : state.Auth.id,
-        picture : state.Auth.picture,
-        name : state.Auth.name,
-    }
-    return {
-        auth : auth,
-    }
-}
+  const auth = {
+    id: state.Auth.id,
+    picture: state.Auth.picture,
+    name: state.Auth.name,
+  };
+  return {
+    auth: auth,
+  };
+};
 
 var actions = {
-    PostMyProject
+  PostMyProject,
 };
 
 export default connect(mapState, actions)(withStyles(style)(CreateProjectForm));
