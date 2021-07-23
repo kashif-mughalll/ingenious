@@ -1,6 +1,7 @@
 import React from 'react'
 import Chips from './../../../Components/Chips/Chips';
 import PostCard from './../../../Components/PostCard/PostCard';
+import Page2 from './ProfileView2';
 import {connect} from 'react-redux'
 import { withStyles } from '@material-ui/core';
 import { useStyles } from './profileView.style';
@@ -38,6 +39,7 @@ var ProfileView = ({profile, classes})=> {
                 <PostCard />
                 <PostCard />
                 <PostCard />
+                <Page2 />
             </div>
         </div>
     )
