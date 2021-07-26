@@ -5,8 +5,11 @@ import { HideModal } from '../../Redux/Modal/ModalActions';
 
 var ModalContainer = ({Modal,HideModal}) => {
     return (
-        <div className="modal-cont flex" onClick={HideModal}>
-            {Modal ? Modal : null}
+        <div className="modal-cont flex" onClick={(e)=>{
+                if(e.target.classList.contains('modal-cont')) HideModal();
+                e.stopPropagation()
+            }}>
+            {Modal ? <Modal/> : null}
         </div>
     )
 }
