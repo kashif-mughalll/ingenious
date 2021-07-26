@@ -5,6 +5,9 @@ import {persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import PostedProjectsReducer from './PostedProjects/PostedProjectsReducer';
 import ModalReducer from './Modal/ModalReducer';
+import RequestsReducer from './Requests/RequestsReducer';
+import SocketReducer from './Socket/SocketReducer';
+import IncomingCallReducer from './IncomingCall/IncomingCallReducer';
 
 
 const PersistConfig = {
@@ -17,7 +20,10 @@ var rootReducer = combineReducers({
   Auth : AuthReducer,
   Profile : ProfileReducer,
   PostedProjects : PostedProjectsReducer,
-  Modal : ModalReducer
+  Requests : RequestsReducer,
+  Modal : ModalReducer,
+  Socket : SocketReducer,
+  IncomingCall : IncomingCallReducer
 });
 
 export default persistReducer(PersistConfig,rootReducer)

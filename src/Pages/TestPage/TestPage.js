@@ -7,16 +7,16 @@ import { SetProfile } from "./../../Redux/Profile/ProfileAcions";
 var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut }) => {
 //   var [Data, setData] = useState(null);
 
-//   useEffect(() => {
-//     const starCountRef = RDB.ref("Data/");
-//     starCountRef.on("value", (snapshot) => {
-//       if (snapshot.exists()) {
-//         const data = snapshot.val();
-//         console.log(data);
-//         setData(data);
-//       }
-//     });
-//   }, []);
+  // useEffect(() => {
+  //   const starCountRef = RDB.ref("Data/");
+  //   starCountRef.on("value", (snapshot) => {
+  //     if (snapshot.exists()) {
+  //       const data = snapshot.val();
+  //       console.log(data);
+  //       setData(data);
+  //     }
+  //   });
+  // }, []);
 
   //   var starCountRef = RDB.ref("posts/" + postId + "/starCount");
 
