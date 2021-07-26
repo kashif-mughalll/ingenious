@@ -6,8 +6,11 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import "./MediaQuery/MediaQuery.css";
 import PostCard from "./Components/PostCard/PostCard";
 import ModalContainer from "./Components/ModalContainer/ModalContainer";
+import { useEffect } from 'react';
+import Connection from './VideoChat/Connection/Connection';
 
 var App = ({ Auth, Profile , Modal }) => {
+
   return (
     <>
       {Modal ? <ModalContainer/> : null}
