@@ -1,7 +1,7 @@
-export var ShowModal = (Form) => (dispatch) => {
+export var ShowModal = (Form,data) => (dispatch) => {
   dispatch({
     type: "SHOW_MODAL",
-    payload: Form,
+    payload: {Form,data}
   });
 };
 

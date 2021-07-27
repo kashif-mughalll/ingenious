@@ -1,8 +1,8 @@
-import React,{ useEffect } from 'react'
-import PostCard from '../../../Components/PostCard/PostCard'
-import './FeedsView.css'
-import { GetAllProjects } from './../../../Redux/Projects/ProjectsActions';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import PostCard from "../../../Components/PostCard/PostCard";
+import "./FeedsView.css";
+import { GetAllProjects } from "./../../../Redux/Projects/ProjectsActions";
+import { connect } from "react-redux";
 
 var FeedsView = ({GetAllProjects,projects})=> {
     useEffect(() => {
@@ -16,8 +16,8 @@ var FeedsView = ({GetAllProjects,projects})=> {
 }
 
 var actions = {
-    GetAllProjects
-}
+  GetAllProjects,
+};
 
 const mapState = (state) => {
     return {
@@ -25,4 +25,4 @@ const mapState = (state) => {
     }
 }
 
-export default connect(mapState,actions)(FeedsView)
+export default connect(mapState, actions)(FeedsView);
