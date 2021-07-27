@@ -11,8 +11,8 @@ const NotificationCard = ({classes}) => {
                 Muhammad Hamza Siddiqui has requested you to collaborate in your project 'Ecommerce Web App' as a developer, designer, and investor
             </div>
             <div className={classes.buttons}>
-                <button>Accept</button>
-                <button>Reject</button>
+                <button className={classes.accept}>Accept</button>
+                <button className={classes.reject}>Reject</button>
             </div>
         </div>
     )

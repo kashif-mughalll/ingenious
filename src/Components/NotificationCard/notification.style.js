@@ -34,14 +34,24 @@ export const useStyles = () => ({
         '&>button': {
             width: '7rem',
             fontSize: '1.4rem',
-            color: 'white',
-            backgroundColor: 'rgb(0, 62, 155)',
             padding: '1rem 0',
             borderRadius: '0.5rem',
-            '&:hover': {
-                cursor: 'pointer',
-                backgroundColor: 'rgb(0, 45, 112)',
-            },
+            color: 'white',
         }
+    },
+    accept: {
+        backgroundColor: 'rgb(0, 62, 155)',
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: 'rgb(0, 62, 255)',
+        },
+    },
+    reject: {
+        marginLeft: '0.5rem',
+        backgroundColor: 'rgb(235, 50, 50)',
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: 'rgb(255, 50, 50)',
+        },
     },
 })
