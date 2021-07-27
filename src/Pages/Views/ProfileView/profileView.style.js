@@ -1,13 +1,16 @@
 export const useStyles = () => ({
     container: {
+        display: 'flex',
         boxSizing: 'border-box',
         width: '100%',
+        overflow: 'hidden',
+        padding: '.5rem'
     },
-    basic: {
-        display: 'flex',
-        // alignItems: 'center'
+    leftBar: {
+        marginRight: '2rem'
     },
     avatar:{
+        height: '22rem',
         '& img':{
             width: '15rem',
             height: '15rem',
@@ -18,58 +21,76 @@ export const useStyles = () => ({
     },
     details: {
         fontSize: '1.7rem',
-        '& > div>b': {
-            paddingRight: '1rem'
-        },
-        '&>div': {
-            marginTop: '1.5rem'
+        height: '18rem',
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        boxShadow: '0rem 0rem 1rem -0.5rem',
+        borderRadius: '0.5rem',
+        '& i': {
+            marginRight: '1rem'
         }
     },
-    name:{
+    name: {
         fontSize: '2.5rem',
+        letterSpacing: '0.2rem',
+        color: 'rgb(0, 62, 155)',
     },
     email: {
-        color: '#666',
-        marginTop: '0 !important'
+        color: '#999',
+        fontSize: '1.7rem',
     },
-    // contact: {
-    //     paddingTop: '1rem'
-    // },
-    // dob: {
-    //     paddingTop: '1rem'
-    // },
-    description: {
-        display: 'flex',
-        marginBottom: '2rem',
-        '&>b': {
-            fontSize: '1.7rem',
+    contact: {
+        fontSize: '1.8rem',
+        marginTop: '1.7rem',
+    },
+    dob: {
+        fontSize: '1.8rem',
+        marginTop: '1.7rem',
+    },
+    about: {
+        fontStyle: 'italic',
+        padding: '1rem',
+        margin: '2rem 0',
+        boxShadow: '0rem 0rem 1rem -0.5rem',
+        borderRadius: '0.5rem',
+        '& h1': {
+            fontSize: '2rem',
+            color: 'rgb(0, 62, 155)',
         },
-        '&>p': {
-            fontSize: '1.4rem',
-            paddingRight: '2rem'
-        }
+        '& p': {
+            fontSize: '1.5rem',
+            paddingTop: '1rem',
+        },
     },
     domain: {
+        padding: '1rem',
+        boxShadow: '0rem 0rem 1rem -0.5rem',
+        borderRadius: '0.5rem',
+    },
+    domainHeading: {
+        fontSize: '2rem',
+        fontStyle: 'italic',
+        color: 'rgb(0, 62, 155)',
+        marginBottom: '1.5rem'
+    },
+    domainList: {
+        fontSize: '1.5rem',
         display: 'flex',
-        marginBottom: '2rem',
-        '& > b': {
-            marginTop: '0.6rem',
-            fontSize: '1.7rem',
-        },
-        '& > div': {
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            boxSizing: 'border-box',
-            fontSize: '1.4rem',
-            paddingRight: '2rem',
-            "&::after": {
-                content: '""',
-                flex: "auto",
-            },
-        },
+        flexDirection: 'column',
+    },
+    domainItem: {
+        margin: '1rem 0'
+    },
+    projects: {
+        padding: '1rem',
+        boxShadow: '0rem 0rem 1rem -0.5rem',
+        borderRadius: '0.5rem',
+    },
+    projectHeading: {
+        color: 'rgb(0, 62, 155)',
+        fontStyle: 'italic',
+        marginTop: '2rem'
     }
 })
