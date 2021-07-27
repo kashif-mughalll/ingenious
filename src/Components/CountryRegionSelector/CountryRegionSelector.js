@@ -8,7 +8,7 @@ import {
 var CountryRegionSelector = ({ country, setCountry }) => {
   return (
     <div>
-      <CountryDropdown classname="CountryRegionSelector"
+      <CountryDropdown className="CountryRegionSelector" 
         value={country}
         onChange={(val) => setCountry(val)}
       />

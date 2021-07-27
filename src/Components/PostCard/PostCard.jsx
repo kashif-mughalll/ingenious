@@ -14,7 +14,7 @@ const PostCard = ({classes}) => {
                     </div>
                     <div className={classes.mainHead}>
                         <div className={classes.authName}>Muhammad Hamza Siddiqui</div>
-                        <div className={classes.location}><i class="fas fa-map-marker-alt"></i>Pakistan</div>
+                        <div className={classes.location}><i className="fas fa-map-marker-alt"></i>Pakistan</div>
                     </div>
                 </div>
                 <div className={classes.dates}>
@@ -28,7 +28,7 @@ const PostCard = ({classes}) => {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ullam eos nulla beatae, tempora necessitatibus distinctio alias esse porro consectetur corrupti quia sapiente earum perferendis aliquam doloribus sunt, itaque voluptatum.
                 </div>
                 <div className={classes.projectDomain}>
-                    {arr.map((name)=><Chips name={name} />)}
+                    {arr.map((name)=><Chips key={name} name={name} />)}
                 </div>
             </div>
             <div className={classes.footer}>

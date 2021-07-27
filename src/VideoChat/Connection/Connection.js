@@ -25,6 +25,7 @@ var Connection = () => {
   });
 
   Socket.on("incomingCall", (data) => {
+    console.log(data)
     console.log("incoimg call");
     store.dispatch({
       type: "SET_INCOMING_CALL",

@@ -16,6 +16,7 @@ const DomainSelector = ({
       <FormControl className={classes.checkGroup} component="fieldset">
         {temp.map(([name, checked]) => (
           <Chips
+            key={name}
             name={name}
             checked={checked}
             handleChange={(e) => {

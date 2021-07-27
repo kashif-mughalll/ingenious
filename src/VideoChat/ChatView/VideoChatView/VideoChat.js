@@ -1,18 +1,19 @@
 import React,{useRef,useEffect} from 'react'
 import './VideoChat.css'
 
-var VideoChat = ({leaveCall,myVideoRef,userVideoRef})=> {
+var VideoChat = ({leaveCall,myVideoRef,userVideoRef,bool})=> {
+    var classList = "flex chat-view-contt " + (bool ? 'opacity-1' : 'opacity-0')
     return (
-        <div className="chat-view-cont flex1">
+        <div className={classList}>
             <video
                 playsInline
+                muted
                 ref={myVideoRef}
                 autoPlay
                 style={{ width: "300px" }}
             />
             <video
                 playsInline
-                muted
                 ref={userVideoRef}
                 autoPlay
                 style={{ width: "300px" }}
