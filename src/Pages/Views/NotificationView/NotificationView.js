@@ -32,6 +32,15 @@ var NotificationView = ({ id }) => {
     <div className="notification-view-cont">
         <h1 className='notification-view-heading'>Notifications</h1>
         <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
     </div>
 )
 };

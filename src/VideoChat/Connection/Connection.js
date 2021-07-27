@@ -2,7 +2,7 @@ import IO from "socket.io-client";
 import { store } from "./../../Redux/store";
 
 var Connection = () => {
-  const Socket = IO.connect("http://localhost:5000");
+  const Socket = IO.connect("http://192.168.250.166:5000");
 
   Socket.on("connect", () => {
     console.log("connected with : " + Socket.id);
