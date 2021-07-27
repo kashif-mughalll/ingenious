@@ -13,13 +13,12 @@ import ChatView from "../../VideoChat/ChatView/ChatView";
 
 var Dashboard = ({call}) => {
   useEffect(() => {
-    // Socket connection
-    SocketConnection();    
+    // SocketConnection();    
   }, [])
 
   return (
     <>
-      {call ? <ChatView/> : null}
+      {/* {call ? <ChatView/> : null} */}
       <Navbar />
       <div className="dashboard">
         <div></div>

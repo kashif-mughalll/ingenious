@@ -8,9 +8,11 @@ import VideoChat from "./VideoChatView/VideoChat";
 
 var ChatView = ({ Socket, Data, EndCall }) => {
   const [CallAccepted, setCallAccepted] = useState(false);
-  const [myStream, setMyStream] = useState();
   const [CallEnded, setCallEnded] = useState(false);
-  const [userStream, setUserStream] = useState();
+  const [CallInProcess, setCallInProcess] = useState(true);
+
+  const [myStream, setMyStream] = useState();
+  const [CallerData, setCallerData] = useState();
 
   // Refs
   const myVideoRef = useRef();
@@ -18,44 +20,34 @@ var ChatView = ({ Socket, Data, EndCall }) => {
   const connectionRef = useRef();
 
   useEffect(() => {
+    console.log("UseEffect running....")
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setMyStream(stream);
         myVideoRef.current.srcObject = stream;
-      });
-    if (Data.initiator) StartCall();
-  }, []);
+        if (Data.initiator) StartCall();  // set timeout for save side
+      })
+  }, [])
 
-  // when i am calling some one
-
-  //   var Data = {
-  //     initiator: false,
-  //     caller: {
-  //       id: "uid of caller",
-  //       name: "muhammad kashif mughal",
-  //       picture:
-  //         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-  //     },
-  //     signalData: "Peer to peer data element",
-  //     to: "uid of second person you are calling",
-  //   };
 
   var LeaveCall = () => {
+    setCallInProcess(false);
     connectionRef.current.destroy();
-    setCallEnded(true);
+    // setCallEnded(true);
   };
 
   const StartCall = () => {
-    console.log("calling...");
+    console.log("starting a call...");
 
-    const peer = new Peer({
+    var peer = new Peer({
       initiator: true,
       trickle: false,
       stream: myStream
     });
 
     peer.on("signal", (data) => {
+      console.log("recieved mu signal data")
       Socket.emit("callUser", {
         caller: Data.caller,
         to: Data.to,
@@ -64,83 +56,60 @@ var ChatView = ({ Socket, Data, EndCall }) => {
     });
 
     peer.on("stream", (stream) => {
-      console.log("ref set")
+      console.log("user video stream found")
       userVideoRef.current.srcObject = stream;
-      // setUserStream(stream);
     });
 
     Socket.on("callAccepted", (signalData) => {
       console.log("call accepted");
-      setCallAccepted(true);
       peer.signal(signalData);
+      // setCallAccepted(true);
+      setCallInProcess(false);
     });
 
     connectionRef.current = peer;
   };
 
   var acceptCall = () => {
+    console.log("accepting call...")
+
     const peer = new Peer({
       initiator: false,
-      trickle: false,
-      stream: myStream,
+			trickle: false,
+			stream: myStream
     });
 
     peer.on("signal", (data) => {
-      Socket.emit("answerCall", { signalData: data, to: Data.caller.id });
+      console.log("Answering multiple time")
+      Socket.emit("answerCall", { signalData: data, to: Data.caller.id })
     });
+
     peer.on("stream", (stream) => {
-      console.log("ref set")
+      console.log("user video stream found")
       userVideoRef.current.srcObject = stream;
     });
-    peer.signal(Data.signalData);
+
+    peer.signal(CallerData);
+
     connectionRef.current = peer;
-    setCallAccepted(true);
+
+    setCallInProcess(false);
+    // setCallAccepted(true);
   };
 
-  return (
-    <>
-    <div className="chat-view-cont">
-    <VideoChat myVideoRef={myVideoRef} userVideoRef={userVideoRef} />
-      {CallAccepted ? (
-        <div></div>
-      ) : (
-        <div className="chat-view-cont">
-          {Data.initiator ? (
-            <Calling caller={Data.caller} leaveCall={LeaveCall} />
-          ) : (
-            <Calling
-              caller={Data.caller}
-              leaveCall={LeaveCall}
-              inComing
-              acceptCall={acceptCall}
-            />
-          )}
-        </div>
-      )}
+  return (    
+    <div classname="chat-view-cont">      
+      <VideoChat leaveCall={LeaveCall} myVideoRef={myVideoRef} userVideoRef={userVideoRef} bool={true} />
+      {CallInProcess ? 
+      <div>
+        {
+          Data.initiator ? <Calling caller={Data.caller} leaveCall={LeaveCall} /> : 
+          <Calling caller={Data.caller} leaveCall={LeaveCall} inComing acceptCall={acceptCall} />
+        }
+      </div> 
+      : null}
     </div>
-    </>
   );
-
-  // return CallAccepted ? (
-  //   CallEnded ? (
-  //     EndCall()
-  //   ) : (
-  //     <div></div>
-  //   )
-  // ) : (
-  //   <div className="chat-view-cont">
-  //     {Data.initiator ? (
-  //       <Calling caller={Data.caller} leaveCall={LeaveCall} />
-  //     ) : (
-  //       <Calling
-  //         caller={Data.caller}
-  //         leaveCall={LeaveCall}
-  //         inComing
-  //         acceptCall={acceptCall}
-  //       />
-  //     )}
-  //   </div>
-  // );
 };
 
 const mapState = (state) => {
