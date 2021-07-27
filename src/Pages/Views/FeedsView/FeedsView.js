@@ -4,30 +4,26 @@ import "./FeedsView.css";
 import { GetAllProjects } from "./../../../Redux/Projects/ProjectsActions";
 import { connect } from "react-redux";
 
-var FeedsView = ({ GetAllProjects, projects }) => {
-  useEffect(() => {
-    GetAllProjects();
-  }, []);
-
-  return (
-    <div className="feeds-view">
-        {console.log(projects)}
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-    </div>
-  );
-};
+var FeedsView = ({GetAllProjects,projects})=> {
+    useEffect(() => {
+        GetAllProjects();
+    }, [])
+    return (
+        <div className="feeds-view">
+            {console.log(projects)}
+            {projects.map(project=><PostCard key={project.id} {...project} />)}
+        </div>
+    )
+}
 
 var actions = {
   GetAllProjects,
 };
 
 const mapState = (state) => {
-  return {
-    projects: state.Projects,
-  };
-};
+    return {
+        projects : state.Projects
+    }
+}
 
 export default connect(mapState, actions)(FeedsView);
