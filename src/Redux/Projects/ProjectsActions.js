@@ -36,5 +36,5 @@ function Match(Projectkeywords, Mydomains) {
     if (Mydomains.includes(Projectkeywords[i])) Arr++;
   }
 
-  return parseInt((Arr / Projectkeywords.length) * 100);
+  return parseInt((Arr / Mydomains.length) * 100);
 }
