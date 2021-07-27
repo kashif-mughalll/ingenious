@@ -3,20 +3,21 @@ import './ModalContainer.css'
 import { connect } from 'react-redux';
 import { HideModal } from '../../Redux/Modal/ModalActions';
 
-var ModalContainer = ({Modal,HideModal}) => {
+var ModalContainer = ({Modal,HideModal,Data}) => {
     return (
         <div className="modal-cont flex" onClick={(e)=>{
                 if(e.target.classList.contains('modal-cont')) HideModal();
                 e.stopPropagation()
             }}>
-            {Modal ? <Modal/> : null}
+            {Modal ? <Modal Data={Data ? Data : ''}/> : null}
         </div>
     )
 }
 
 const mapState = (state)=> {
     return {
-        Modal : state.Modal
+        Modal : state.Modal.Form,
+        Data : state.Modal.data
     }
 }
 
