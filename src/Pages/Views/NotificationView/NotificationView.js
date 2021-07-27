@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { RDB } from "../../../Firebase/Firebase-Configuration";
 import "./NotificationView.css";
 import { connect } from "react-redux";
+import NotificationCard from "../../../Components/NotificationCard/NotificationCard";
 
 var NotificationView = ({ id }) => {
   var FakeRequest = {
@@ -27,7 +28,21 @@ var NotificationView = ({ id }) => {
     });
   }, []);
 
-  return <div className="notification-view-cont">Notification View</div>;
+  return (
+    <div className="notification-view-cont">
+        <h1 className='notification-view-heading'>Notifications</h1>
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+        <NotificationCard />
+    </div>
+)
 };
 
 const mapState = (state) => {
