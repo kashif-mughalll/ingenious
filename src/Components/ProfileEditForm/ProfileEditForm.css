@@ -1,0 +1,33 @@
+.profile-page-form-container{
+    padding-left: 2rem;
+    width: 50rem;
+}
+
+.profile-page-heaing2{
+    font-size: 1.9rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.submit-profile-btn{
+    width: 100%;
+    font-size: 1.6rem;
+    color: white;
+    margin: 2.5rem 0;
+    margin-bottom: 4rem;
+    background-color: rgb(0, 62, 155);
+    align-self: center;
+    padding: 1.5rem 0;
+    border-radius: 0.5rem;
+}
+.submit-profile-btn:hover{
+    cursor: pointer;
+    background-color: rgb(0, 45, 112);
+}
+
+.error-21{
+    color: red;
+    font-size: 1.3rem;
+    margin: 0.3rem 2px;
+}

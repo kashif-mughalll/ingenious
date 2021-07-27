@@ -1,0 +1,157 @@
+.footer{
+    height: min-content;
+    width: 100%;
+    display: grid;
+    grid-template-rows: min-content min-content;
+}
+
+.Footer_top{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    border-top: 1px solid #eeeeee;
+}
+
+.footer_left{
+    box-sizing: border-box;
+    padding: 0 3.2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,14rem);
+    grid-gap: 1rem;
+}
+
+
+._block{
+    background-color: white;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Footer_Label{
+    margin: 1.5rem 0.3rem;
+    font-size: 1.6rem;
+    color: #444444;
+}
+
+
+.Footer_btn_style{
+    font-size: 1.38rem;
+    color: #aaaaaa;
+    background: transparent;
+    margin: 0.4rem;
+}
+
+.Footer_btn_style1{
+    font-size: 1.3rem;
+    color: #aaaaaa;
+    background: transparent;
+    margin: 0.35rem;
+    padding: 0 1.7rem;    
+    border-right: 1px solid #bbbbbb;
+}
+
+.Footer_btn_style:hover{
+    color: #333333;
+}
+
+.Footer_btn_style1:hover{
+    color: #333333;
+}
+
+
+
+.footer_left_mobile{
+    width: 100%;
+    background: blue;
+    height: min-content;
+}
+
+.Box_btn_Style{
+    display: grid;
+    grid-template-rows: min-content min-content;
+    padding: 0 2rem;
+    background-color: #eeeeee;
+    border-top: 1px solid #bbbbbb;
+}
+
+.Box_btn_Style_Top{
+    display: grid;
+    grid-template-columns: 93% 7%;
+}
+
+.Box_btn_Style_Bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Btn__style{
+    font-size: 1.8rem;
+    color: #444444;
+    margin: 2rem;
+}
+
+.Heading_Style{
+    font-size: 1.8rem;
+    color: #444444;
+    margin: 2rem 0;
+}
+
+
+
+.footer_right{
+    padding: 2rem;
+}
+
+
+.Footer_Sample_Text_Style{
+    margin: 3rem 0;
+    font-size: 1.7rem;
+    color: #444444;
+}
+
+.Footer_input_style{
+    margin-top: 1.5rem;
+    margin-bottom: 5rem;
+    width: 40rem;
+    background: transparent;
+    border-bottom: 2px solid #aaaaaa;
+    font-size: 1.6rem;
+    color: #444444;
+}
+
+.Footer_input_btn_style{
+    background: transparent;
+    border-bottom: 2px solid #aaaaaa;
+    font-size: 1.6rem;
+    color: #999999;
+}
+
+
+.Footer_bottom{
+    box-sizing: border-box;
+    background: #eeeeee;
+    display: inline;
+    justify-content: flex-start;
+    padding: 1rem 3rem;
+}
+
+.Footer_bottom_Label{
+    font-size: 1.4rem;
+    color: #aaaaaa;
+    background: transparent;
+    margin: 0.35rem; 
+    margin-right: 1.8rem;
+}
+
+
+
+
+
+
+
+
+
+

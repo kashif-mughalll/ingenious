@@ -1,0 +1,28 @@
+/* .navigation-btn-cont{
+
+} */
+
+.navigationbttn{
+    font-size: 2.7rem;
+    color: rgb(81, 112, 126);
+    padding-bottom: 0.5rem;
+    transition: all 0.15s;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.navigationbttn:hover{
+    color: rgb(0, 105, 146);
+}
+
+.bordered-navigation{
+    border-bottom: 0.3rem solid rgb(0, 104, 165);
+    color : rgb(0, 104, 165)
+}
+
+.caret-style{
+    font-size: 1.5rem;
+    color: #888;
+    margin: 0.5rem;
+}
+

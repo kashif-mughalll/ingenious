@@ -1,0 +1,11 @@
+
+.notification-view-cont{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.notification-view-heading{
+    font-size: 3rem;
+    color: rgb(0, 62, 155);
+    margin-bottom: 2rem;
+}

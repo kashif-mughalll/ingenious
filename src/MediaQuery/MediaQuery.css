@@ -1,0 +1,78 @@
+@media only screen and (max-width: 950px) {
+  html {
+    font-size: 0.48em;
+  }
+
+  .Footer_top {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  html {
+    font-size: 0.45em;
+  }
+
+  .Footer_top {
+    grid-template-rows: min-content min-content;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .profile-page-container2{
+    grid-template-columns: minmax(1rem,1fr) 55rem minmax(1rem,1fr);
+  }
+
+  .mov-to-left{
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .profile-page-container3{
+    grid-template-columns: min-content;
+    grid-template-rows: 25rem 1fr;
+  }
+
+  .auth-page {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .auth-page-cartoon-div {
+    justify-content: center;
+  }
+
+  .auth-page-cartoon-img {
+    height: 40rem;
+    width: 40rem;
+  }
+
+  .cover-width-100 {
+    justify-content: center;
+  }
+
+  .auth-page-form {
+    width: 40rem;
+    padding-left: 0;
+    padding-top: 2rem;    
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  
+}
+
+@media only screen and (max-width: 450px) {
+  
+  .profile-page-container2{
+    grid-template-columns: minmax(1rem,1fr) 45rem minmax(1rem,1fr);
+  }
+
+  .profile-page-form-container{
+    padding-left: 2rem;
+    width: 40rem;
+  }
+
+}

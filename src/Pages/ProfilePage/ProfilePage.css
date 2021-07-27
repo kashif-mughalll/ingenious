@@ -1,0 +1,115 @@
+.profile-page-container {
+  width: 100%;
+  height: max-content;
+}
+
+.profile-page-style-div {
+  height: 1.5rem;
+  width: 100%;
+  border-radius: 0 0 1rem 1rem;
+  background: linear-gradient(to right, rgb(0, 118, 148), rgb(0, 0, 207));
+}
+
+.profile-page-container2 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) 75rem minmax(1rem, 1fr);
+}
+
+.profile-page-container3 {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+}
+
+.profile-picture-cont {
+  position: relative;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture {
+  width: 100%;
+}
+
+.edit-profile-btn {
+  width: 10rem;
+  height: 3.5rem;
+  background-color: rgba(0, 37, 116, 0.623);
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  z-index: 12102;
+}
+
+.edit-profile-btn:hover {
+  background-color: rgb(0, 37, 116);
+}
+
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+  display: flex;
+}
+.custom-file-input::before {
+  content: "Select picture";
+  display: inline-block;
+  background: rgb(0, 55, 156);
+  border-radius: 0.5rem;
+  padding: 0.8rem 0.8rem;
+  padding-left: 1.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+}
+.custom-file-input:hover::before {
+  background: rgb(0, 138, 156)
+}
+.custom-file-input {
+  display: flex;
+  width: 12rem;
+  height: 3.5rem;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.loader-cont{
+  background-color: rgba(170, 170, 170, 0.6);  
+  width: 13rem;
+  height: 13rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.loader-itself{
+  top: 0;
+  left: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.3rem solid rgb(0, 69, 126);
+  border-top: 0;
+  border-right: 0;
+  animation: Anime 0.8s infinite linear;
+}
+
+@keyframes Anime{
+  0%{
+    transform: rotate(0deg);
+  }100%{
+    transform: rotate(360deg);
+  }
+}
