@@ -1,11 +1,10 @@
 import { withStyles } from "@material-ui/core"
 import { useState } from "react";
-import { connect } from "react-redux"
 import { useStyles } from "./projectDetailsForm.style"
 import DomainSelector from "../DomainSelector/DomainSelector";
 
-const ProjectDetailsForm = ({classes, projects}) => {
-    const {postedBy, postedAt, duration, title, description, location, keywords} = projects[0];
+const ProjectDetailsForm = ({classes, Data}) => {
+    const {postedBy, postedAt, duration, title, description, location, keywords} = Data;
     let myObj = {};
     for (let i=0 ; i<keywords.length ; i++){
         myObj[keywords[i]] = false;
@@ -56,9 +55,4 @@ const ProjectDetailsForm = ({classes, projects}) => {
         </div>
     )
 }
-const mapStates = (state) => {
-    return {
-        projects: state.PostedProjects
-    }
-}
-export default connect(mapStates)(withStyles(useStyles)(ProjectDetailsForm))
+export default withStyles(useStyles)(ProjectDetailsForm);
