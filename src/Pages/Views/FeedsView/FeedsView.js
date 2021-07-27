@@ -8,13 +8,10 @@ var FeedsView = ({GetAllProjects,projects})=> {
     useEffect(() => {
         GetAllProjects();
     }, [])
-
     return (
         <div className="feeds-view">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {console.log(projects)}
+            {projects.map(project=><PostCard key={project.id} {...project} />)}
         </div>
     )
 }
@@ -24,7 +21,9 @@ var actions = {
 }
 
 const mapState = (state) => {
-    projects : state.Projects
+    return {
+        projects : state.Projects
+    }
 }
 
 export default connect(mapState,actions)(FeedsView)

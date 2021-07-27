@@ -37,9 +37,7 @@ var ProfileView = ({profile, classes})=> {
                 </div>
                 <div data-aos="zoom-in" data-aos-duration="1500" className={classes.about}>
                     <h1>About</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ullam eos nulla beatae, tempora necessitatibus distinctio alias esse porro consectetur corrupti quia sapiente earum perferendis aliquam doloribus sunt, itaque voluptatum.
-                    </p>
+                    <p>{description}</p>
                 </div>
                 <div className={classes.projects}>
                     <h1 data-aos="fade-left" data-aos-anchor-placement="top-bottom" className={classes.projectHeading}>MY PROJECTS</h1>
