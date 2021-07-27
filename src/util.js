@@ -15,14 +15,14 @@ var Idea = {
 };
 
 
-// var profile = {
-//   country: "india",
-//   keywords: ["key1", "key2"],
-//   contact: "0333321322",
-//   description: "hello this is my profile this and that etc",
-//   title: "Web Developer",
-//   ...Auth,
-// };
+var profile = {
+  country: "india",
+  keywords: ["key1", "key2"],
+  contact: "0333321322",
+  description: "hello this is my profile this and that etc",
+  title: "Web Developer",
+  ...Auth,
+};
 
 export const project = {
   title: 'E-Commerse Web App',
