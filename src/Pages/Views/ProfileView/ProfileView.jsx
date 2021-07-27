@@ -43,10 +43,10 @@ var ProfileView = ({profile, classes})=> {
                 </div>
                 <div className={classes.projects}>
                     <h1 data-aos="fade-left" data-aos-anchor-placement="top-bottom" className={classes.projectHeading}>MY PROJECTS</h1>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard /></div>
+                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
+                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
+                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
+                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
                 </div>
             </div>
         </div>

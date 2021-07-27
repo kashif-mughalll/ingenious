@@ -4,7 +4,6 @@ export const useStyles = () => ({
         backgroundColor: '#fff',
         borderRadius: '0.5rem',
         margin: '2rem 0',
-        // boxShadow: '0px 0px 10px -5px black',
         border: '0.1rem solid #bbb'
     },
     header: {

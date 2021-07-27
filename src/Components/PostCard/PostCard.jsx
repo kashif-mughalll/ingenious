@@ -6,7 +6,7 @@ import {ShowModal} from '../../Redux/Modal/ModalActions'
 import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
 
-const PostCard = ({classes,ShowModal}) => {
+const PostCard = ({classes, ShowModal, editable=false, onEdit=null, onDelete=null, onLike=null, onComment=null}) => {
     const arr = ['javascript', 'react', 'angular', 'mongoDB', 'css']
     return(
         <div className={classes.container}>
@@ -35,9 +35,19 @@ const PostCard = ({classes,ShowModal}) => {
                 </div>
             </div>
             <div className={classes.footer}>
-                <div className="like"><b><i class="fas fa-thumbs-up"></i>Like</b></div>
-                <div className="comment"><b><i class="fas fa-comments"></i>Comments</b></div>
-                <div className="collaborate" onClick={()=> ShowModal(ProjectDetailsForm)}><b><i class="fas fa-user-plus"></i>Collaborate</b></div>
+                {
+                    editable?
+                    <>
+                        <div className="edit" onClick={onEdit}><b><i className="fas fa-pencil-alt"></i>Edit</b></div>
+                        <div className="delete" onClick={onDelete}><b><i className="far fa-trash-alt"></i>Delete</b></div>
+                    </>
+                    :
+                    <>
+                        <div className="like" onClick={onLike}><b><i className="fas fa-thumbs-up"></i>Like</b></div>
+                        <div className="comment" onClick={onComment}><b><i className="fas fa-comments"></i>Comments</b></div>
+                        <div className="collaborate" onClick={()=> ShowModal(ProjectDetailsForm)}><b><i className="fas fa-user-plus"></i>Collaborate</b></div>
+                    </>
+                }
             </div>
         </div>
     )
