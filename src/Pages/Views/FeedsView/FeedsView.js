@@ -10,7 +10,6 @@ var FeedsView = ({GetAllProjects,projects})=> {
     }, [])
     return (
         <div className="feeds-view">
-            {console.log(projects)}
             {projects.map(project=><PostCard key={project.id} {...project} />)}
         </div>
     )
