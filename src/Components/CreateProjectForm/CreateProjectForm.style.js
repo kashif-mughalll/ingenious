@@ -32,7 +32,8 @@ export const style = ()=> ({
       marginTop : "2rem",
     },
     container : {
-      width : "65rem",
+      padding: '1rem',
+      width : "100%",
       display : 'flex',
       justifyContent : 'center',
       flexFlow : "column",
