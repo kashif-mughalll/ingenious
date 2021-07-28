@@ -15,8 +15,7 @@ var App = ({ Auth, Profile , Modal }) => {
   return (
     <>
       {Modal ? <ModalContainer/> : null}
-      {/* {Auth ? (Profile ? <Dashboard /> : <ProfilePage />) : <AuthPage />} */}
-      <TestPage/>
+      {Auth ? (Profile ? <Dashboard /> : <ProfilePage />) : <AuthPage />}
     </>
   );
 };

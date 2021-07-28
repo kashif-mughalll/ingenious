@@ -32,10 +32,10 @@ export const style = ()=> ({
       marginTop : "2rem",
     },
     container : {
-      width : "70%",
+      width : "65rem",
       display : 'flex',
       justifyContent : 'center',
       flexFlow : "column",
-      backgroundColor: 'white'
-    }
+      backgroundColor: 'white',
+    },
   });
