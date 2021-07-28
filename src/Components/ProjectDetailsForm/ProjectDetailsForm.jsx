@@ -4,7 +4,8 @@ import { connect } from "react-redux"
 import { useStyles } from "./projectDetailsForm.style"
 import DomainSelector from "../DomainSelector/DomainSelector";
 
-const ProjectDetailsForm = ({classes, projects}) => {
+const ProjectDetailsForm = ({classes, projects,Data}) => {
+    console.log(Data);
     const {postedBy, postedAt, duration, title, description, location, keywords} = projects[0];
     let myObj = {};
     for (let i=0 ; i<keywords.length ; i++){
