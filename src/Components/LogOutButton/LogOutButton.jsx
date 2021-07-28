@@ -1,10 +1,12 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Fade from "@material-ui/core/Fade";
+import { connect } from 'react-redux';
+import {LogOut} from '../../Redux/Auth/authActions'
 
-export default function LogOutButton({picture}) {
+var LogOutButton = ({ picture,LogOut })=> {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -17,12 +19,15 @@ export default function LogOutButton({picture}) {
   };
 
   return (
-    <div>
-      <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
-      <div className="flex-around">
-            <div className="nav-pic-cont">
-              <img 
-              
+    <div className="flex-around">
+      <Button
+        aria-controls="fade-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <div className="flex">
+          <div className="nav-pic-cont">
+            <img
               // onClick={()=> CallUser({
               //    initiator: true,
               //    caller: {
@@ -33,18 +38,18 @@ export default function LogOutButton({picture}) {
               //    },
               //    to: "0NYFblgI7UTtD95CEOaBku2YjUi2",
               // })}
-              
-                className="navbar-picture"
-                src={
-                  picture
-                    ? picture
-                    : "https://static.vecteezy.com/system/resources/previews/002/534/006/non_2x/social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standing-icon-grey-background-free-vector.jpg"
-                }
-                alt=""
-              />
-            </div>
-            <i className="fas fa-caret-down caret-style"></i>
+
+              className="navbar-picture"
+              src={
+                picture
+                  ? picture
+                  : "https://static.vecteezy.com/system/resources/previews/002/534/006/non_2x/social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standing-icon-grey-background-free-vector.jpg"
+              }
+              alt=""
+            />
           </div>
+          <i className="fas fa-caret-down caret-style"></i>
+        </div>
       </Button>
       <Menu
         id="fade-menu"
@@ -54,10 +59,18 @@ export default function LogOutButton({picture}) {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={()=> {
+          LogOut();
+          handleClose();
+        }}>Logout</MenuItem>
       </Menu>
     </div>
   );
 }
+
+const actions = {
+  LogOut
+}
+
+export default connect(null,actions)(LogOutButton)

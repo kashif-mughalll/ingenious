@@ -17,7 +17,7 @@ const ProjectDetailsForm = ({classes, Data}) => {
         <div className={classes.container}>
             <div className={classes.authDescription}>
                 <div className={classes.avatar}>
-                    <img src={postedBy.picture} alt="Author Image" />
+                    <img src={postedBy.picture} alt="Author Image"/>
                 </div>
                 <div className={classes.authName}>{postedBy.name}</div>
             </div>
