@@ -7,7 +7,11 @@ const Chips = ({ classes, name, checked=false, handleChange=null }) => {
     <Chip
       label={name}
       classes={{
-        clickable:classes.focus
+        clickable	: {
+          '&:focus': {
+            backgroungColor: 'black'
+          }
+        }
       }}
       size="small"
       className={checked ? classes.checked : classes.simple}

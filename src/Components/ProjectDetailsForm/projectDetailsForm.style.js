@@ -4,6 +4,7 @@ export const useStyles = () => ({
         padding: '3rem',
         backgroundColor: 'white',
         maxHeight: '80vh',
+        borderRadius: '1rem',
         overflowY: 'scroll',
         '&::-webkit-scrollbar': {
             width: '6px'

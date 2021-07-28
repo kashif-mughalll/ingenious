@@ -31,10 +31,11 @@ export const style = ()=> ({
     margintop : {
       marginTop : "2rem",
     },
-    container1 : {
-      width : "70%",
+    container : {
+      width : "65rem",
       display : 'flex',
       justifyContent : 'center',
-      flexFlow : "column"
-    }
+      flexFlow : "column",
+      backgroundColor: 'white',
+    },
   });

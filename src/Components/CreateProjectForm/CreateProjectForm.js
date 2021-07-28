@@ -17,14 +17,17 @@ var FilterKeyWorkds = (KeyWords) => {
   return Arr;
 };
 
-var CreateProjectForm = ({ classes, auth, PostMyProject}) => {
-  const [ProjectTitle, setProjectTitle] = useState("");
-  const [ProjectDescription, setProjectDescription] = useState("");
-  const [StaringDate, setStaringDate] = useState(
-    new Date().toISOString().slice(0, 10)
+var CreateProjectForm = ({ classes, auth, PostMyProject, Data={} }) => {
+  const { postedAt='', duration='', title='', description='', location='', keywords=[]} = Data;
+  const datesArray = duration.split(' ');
+  
+  const [ProjectTitle, setProjectTitle] = useState(title);
+  const [ProjectDescription, setProjectDescription] = useState(description);
+  const [StartingDate, setStartingDate] = useState(
+    datesArray[0] || new Date().toISOString().slice(0, 10)
   );
-  const [EndingDate, setEndingDate] = useState("");
-  const [Location, setLocation] = useState("Pakistan");
+  const [EndingDate, setEndingDate] = useState(datesArray[2]);
+  const [Location, setLocation] = useState(location || "Pakistan");
 
   const [KeyWords, setKeyWords] = useState({
     development: false,
@@ -65,7 +68,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject}) => {
         title: ProjectTitle,
         description: ProjectDescription,
         keywords: FilterKeyWorkds(KeyWords),
-        duration: StaringDate + " To " + EndingDate,
+        duration: StartingDate + " To " + EndingDate,
         location: Location,
       };
       PostMyProject(Obj);
@@ -73,7 +76,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject}) => {
   };
 
   return (
-    <div className={classes.container1}>
+    <div className={classes.container}>
       <FormControl fullWidth>
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
@@ -113,7 +116,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject}) => {
         <div className="flex">
           <TextField
             onChange={(e) => {
-              setStaringDate(e.target.value);
+              setStartingDate(e.target.value);
             }}
             InputLabelProps={{ style: { fontSize: "1.5rem" } }}
             fullWidth
@@ -122,7 +125,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject}) => {
             id="date"
             label="Project Starting Date"
             type="date"
-            defaultValue={StaringDate}
+            defaultValue={StartingDate}
             InputLabelProps={{ shrink: true }}
           />
           <TextField
