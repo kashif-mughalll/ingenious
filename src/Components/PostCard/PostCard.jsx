@@ -6,7 +6,8 @@ import {ShowModal} from '../../Redux/Modal/ModalActions'
 import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
 
-const PostCard = ({classes, ShowModal, id, match, postedBy, postedAt, duration, location, title, description, keywords, editable=false, onEdit=null, onDelete=null, onLike=null, onComment=null}) => {
+const PostCard = ({classes, ShowModal, project, editable=false, onEdit=null, onDelete=null, onLike=null, onComment=null}) => {
+    const { id, match, postedBy, postedAt, duration, location, title, description, keywords } = project
     return(
         <div className={classes.container}>
             <div className={classes.header}>
@@ -42,7 +43,7 @@ const PostCard = ({classes, ShowModal, id, match, postedBy, postedAt, duration, 
                     <>
                         <div className="like" onClick={onLike}><b><i className="fas fa-thumbs-up"></i>Like</b></div>
                         <div className="comment" onClick={onComment}><b><i className="fas fa-comments"></i>Comments</b></div>
-                        <div className="collaborate" onClick={()=> ShowModal(ProjectDetailsForm)}><b><i className="fas fa-user-plus"></i>Collaborate</b></div>
+                        <div className="collaborate" onClick={()=> ShowModal(ProjectDetailsForm, project)}><b><i className="fas fa-user-plus"></i>Collaborate</b></div>
                     </>
                 }
             </div>

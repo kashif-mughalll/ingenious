@@ -5,13 +5,15 @@ import PostCard from '../../../Components/PostCard/PostCard';
 import {connect} from 'react-redux'
 import { withStyles } from '@material-ui/core';
 import { useStyles } from './profileView.style';
+import { GetMyProjects } from '../../../Redux/PostedProjects/PostedProjectsAction';
 
-var ProfileView = ({profile, classes})=> {
+var ProfileView = ({profile, classes, myProjects, GetMyProjects})=> {
     const {id, name, email, picture, dob, description, contact, keywords} = profile;
     useEffect(() => {
         AOS.init({
           duration : 1000
         });
+        GetMyProjects();
       }, []);
     return (
         <div className={classes.container}>
@@ -41,10 +43,7 @@ var ProfileView = ({profile, classes})=> {
                 </div>
                 <div className={classes.projects}>
                     <h1 data-aos="fade-left" data-aos-anchor-placement="top-bottom" className={classes.projectHeading}>MY PROJECTS</h1>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
-                    <div data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard editable={true} /></div>
+                    {myProjects.map( project => <div key={project.id} data-aos="fade-left" data-aos-anchor-placement="top-bottom" ><PostCard project={project} editable={true} /></div> )}
                 </div>
             </div>
         </div>
@@ -53,8 +52,13 @@ var ProfileView = ({profile, classes})=> {
 
 const mapState = (state) => {
     return {
-        profile : state.Profile
+        profile : state.Profile,
+        myProjects : state.PostedProjects
     }
 }
 
-export default connect(mapState)(withStyles(useStyles)(ProfileView))
+const actions = {
+    GetMyProjects
+}
+
+export default connect(mapState, actions)(withStyles(useStyles)(ProfileView))
