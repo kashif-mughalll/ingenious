@@ -5,12 +5,14 @@ import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import { CreateCollaborationRequest } from "./../../Redux/Requests/RequestsActions";
 import { v4 as Uuid } from 'uuid';
+import {HideModal} from '../../Redux/Modal/ModalActions'
 
 const ProjectDetailsForm = ({
   classes,
   Data,
   myInfo,
   CreateCollaborationRequest,
+  HideModal
 }) => {
   const {
     postedBy,
@@ -91,6 +93,7 @@ const ProjectDetailsForm = ({
                   rid : Uuid(),
                 };
                 CreateCollaborationRequest(Obj);
+                HideModal();
               }}
             >
               Request for Collaboraation
@@ -114,6 +117,7 @@ var mapState = (state) => {
 
 const actions = {
   CreateCollaborationRequest,
+  HideModal
 };
 
 export default withStyles(useStyles)(
