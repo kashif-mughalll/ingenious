@@ -8,11 +8,7 @@ var NotificationView = ({ requests }) => {
   return (
     <div className="notification-view-cont">
       <h1 className="notification-view-heading">Notifications</h1>
-      <NotificationCard />
-      <NotificationCard />
-      <NotificationCard />
-      <NotificationCard />
-      <NotificationCard />
+      {requests.map( request => <NotificationCard key={request.rid} {...request} />)}
     </div>
   );
 };
