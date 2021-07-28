@@ -38,5 +38,5 @@ export var DeleteProject = (id) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
