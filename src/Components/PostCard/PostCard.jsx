@@ -39,7 +39,7 @@ const PostCard = ({classes, ShowModal, project, editable=false, onDelete=null, o
                     editable?
                     <>
                         <div className="edit" onClick={ () => ShowModal(CreateProjectForm, project) }><b><i className="fas fa-pencil-alt"></i>Edit</b></div>
-                        <div className="delete" onClick={ () => ShowModal(DeletePopUp, id) }><b><i className="far fa-trash-alt"></i>Delete</b></div>
+                        <div className="delete" onClick={ () => ShowModal(DeletePopUp, ['project', id]) }><b><i className="far fa-trash-alt"></i>Delete</b></div>
                     </>
                     :
                     <>

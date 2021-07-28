@@ -3,8 +3,8 @@ import { useStyles } from "./deletePopUp.style";
 import { DeleteRequest } from "./../../Redux/Requests/RequestsActions";
 import { connect } from "react-redux";
 import { HideModal } from "../../Redux/Modal/ModalActions";
-
-const DeletePopUp = ({ classes, DeleteRequest, HideModal, Data }) => {
+import { DeleteProject, GetMyProjects } from "../../Redux/PostedProjects/PostedProjectsAction";
+const DeletePopUp = ({ classes, DeleteRequest, DeleteProject, HideModal, Data, GetMyProjects }) => {
   return (
     <div className={classes.container}>
       <div className={classes.heading}>
@@ -17,13 +17,14 @@ const DeletePopUp = ({ classes, DeleteRequest, HideModal, Data }) => {
         <button className={classes.accept}>Cancel</button>
         <button
           className={classes.reject}
-          onClick={() => {
+          onClick={async () => {
             switch (Data[0]) {
               case 'notification':
                 DeleteRequest(Data[1]);
                 break;
-              case 'post':
-                DeleteRequest(Data[1]);
+              case 'project':
+                await DeleteProject(Data[1]);
+                GetMyProjects();
                 break
               default:
                 break;
@@ -40,7 +41,9 @@ const DeletePopUp = ({ classes, DeleteRequest, HideModal, Data }) => {
 };
 
 const actions = {
+  GetMyProjects,
   DeleteRequest,
+  DeleteProject,
   HideModal
 };
 
