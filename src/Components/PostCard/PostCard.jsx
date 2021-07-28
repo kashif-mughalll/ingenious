@@ -6,6 +6,7 @@ import {ShowModal} from '../../Redux/Modal/ModalActions'
 import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
 import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
+import DeletePopUp from "../DeletePopUp/DeletePopUp";
 
 const PostCard = ({classes, ShowModal, project, editable=false, onDelete=null, onLike=null, onComment=null}) => {
     const { id, match, postedBy, postedAt, duration, location, title, description, keywords } = project
@@ -38,7 +39,7 @@ const PostCard = ({classes, ShowModal, project, editable=false, onDelete=null, o
                     editable?
                     <>
                         <div className="edit" onClick={ () => ShowModal(CreateProjectForm, project) }><b><i className="fas fa-pencil-alt"></i>Edit</b></div>
-                        <div className="delete" onClick={onDelete}><b><i className="far fa-trash-alt"></i>Delete</b></div>
+                        <div className="delete" onClick={ () => ShowModal(DeletePopUp, id) }><b><i className="far fa-trash-alt"></i>Delete</b></div>
                     </>
                     :
                     <>

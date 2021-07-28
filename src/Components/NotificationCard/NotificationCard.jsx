@@ -29,7 +29,7 @@ const NotificationCard = ({ classes, ShowModal, id, rid, pid, info, keywords, ti
         <button className={classes.call}>
           <i className="fas fa-phone"></i>
         </button>
-        <button className={classes.reject} onClick={()=>{ShowModal(DeletePopUp, null);console.log('object');}}>
+        <button className={classes.reject} onClick={()=>{ShowModal(DeletePopUp, ['notification',rid])}}>
           <i className="far fa-trash-alt"></i>
         </button>
       </div>
