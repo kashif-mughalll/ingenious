@@ -23,8 +23,8 @@ const PostCard = ({classes, ShowModal, project, editable=false, onDelete=null, o
                     </div>
                 </div>
                 <div className={classes.dates}>
-                    <div className={classes.postDate}><b>Posted At: </b>{postedAt}</div>
-                    <div className={classes.duration}><b>Duration: </b>{duration}</div>
+                    <div className={classes.postDate}><b>Posted At : </b>{postedAt}</div>
+                    <div className={classes.duration}><b>Duration : </b>{duration}</div>
                 </div>
             </div>
             <div className={classes.description}>

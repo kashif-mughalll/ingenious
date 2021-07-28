@@ -33,8 +33,6 @@ export var GetMyProjects = () => async (dispatch, getState) => {
 export var DeleteProject = (id) => async (dispatch) => {
   try {    
     let response = await DB.collection("Projects").doc(id).delete();
-    console.log(response)
-    GetMyProjects();
   } catch (error) {
     console.log(error);
   }
