@@ -9,11 +9,13 @@ import NotificationView from './../Views/NotificationView/NotificationView';
 import SocketConnection from "../../VideoChat/Connection/Connection";
 import { connect } from 'react-redux';
 import ChatView from "../../VideoChat/ChatView/ChatView";
+import {GetCollaborationRequests} from '../../Redux/Requests/RequestsActions'
 
 
-var Dashboard = ({call}) => {
+var Dashboard = ({call,GetCollaborationRequests}) => {
   useEffect(() => {
     // SocketConnection();    
+    GetCollaborationRequests();
   }, [])
 
   return (
@@ -42,5 +44,8 @@ const mapState = (state) => {
   }
 }
 
+const actions = {
+  GetCollaborationRequests
+}
 
-export default connect(mapState)(Dashboard);
+export default connect(mapState,actions)(Dashboard);

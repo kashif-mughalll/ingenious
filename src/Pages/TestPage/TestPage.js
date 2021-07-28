@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { RDB } from "../../Firebase/Firebase-Configuration";
 import { LogOut, SignInWithGoogle } from "./../../Redux/Auth/authActions";
 import { SetProfile } from "./../../Redux/Profile/ProfileAcions";
+import { CreateCollaborationRequest, GetCollaborationRequests } from './../../Redux/Requests/RequestsActions';
 
-var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut }) => {
+var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut ,CreateCollaborationRequest,GetCollaborationRequests}) => {
   var [Data, setData] = useState(null);
 
   // useEffect(() => {
@@ -44,15 +45,17 @@ var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut }) => {
   }, []);
 
   console.log("Rerendering");
+  GetCollaborationRequests();
   return (
     <div>
-      <button onClick={() => {
-        const Requests = RDB.ref("Requests/");
-        Requests.child("idds2").set({name:'kashif',Arr:["kashif","hamza"]})
-
-
-
-      }}> Click ME </button>
+      <button
+        onClick={async () => {
+          // const Requests = RDB.ref("Requests/");
+          // Requests.child("idds2").set({name:'kashif',Arr:["kashif","hamza"]})
+          CreateCollaborationRequest({name:"hamza"});          
+        }}
+      >Click ME
+      </button>
     </div>
   );
 };
@@ -61,6 +64,8 @@ var actions = {
   SignInWithGoogle,
   SetProfile,
   LogOut,
+  CreateCollaborationRequest,
+  GetCollaborationRequests
 };
 
 var mapState = (state) => {
