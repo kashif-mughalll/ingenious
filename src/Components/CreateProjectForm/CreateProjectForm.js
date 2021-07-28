@@ -20,7 +20,7 @@ var FilterKeyWorkds = (KeyWords) => {
 var CreateProjectForm = ({ classes, auth, PostMyProject, Data={} }) => {
   const { postedAt='', duration='', title='', description='', location='', keywords=[]} = Data;
   const datesArray = duration.split(' ');
-  console.log(Data);
+  
   const [ProjectTitle, setProjectTitle] = useState(title);
   const [ProjectDescription, setProjectDescription] = useState(description);
   const [StartingDate, setStartingDate] = useState(

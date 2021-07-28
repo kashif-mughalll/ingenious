@@ -8,13 +8,15 @@ import PostCard from "./Components/PostCard/PostCard";
 import ModalContainer from "./Components/ModalContainer/ModalContainer";
 import { useEffect } from 'react';
 import Connection from './VideoChat/Connection/Connection';
+import TestPage from "./Pages/TestPage/TestPage";
 
 var App = ({ Auth, Profile , Modal }) => {
 
   return (
     <>
       {Modal ? <ModalContainer/> : null}
-      {Auth ? (Profile ? <Dashboard /> : <ProfilePage />) : <AuthPage />}
+      {/* {Auth ? (Profile ? <Dashboard /> : <ProfilePage />) : <AuthPage />} */}
+      <TestPage/>
     </>
   );
 };

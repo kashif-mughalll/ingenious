@@ -1,11 +1,11 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-// import { RDB } from "../../Firebase/Firebase-Configuration";
+import { RDB } from "../../Firebase/Firebase-Configuration";
 import { LogOut, SignInWithGoogle } from "./../../Redux/Auth/authActions";
 import { SetProfile } from "./../../Redux/Profile/ProfileAcions";
 
 var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut }) => {
-//   var [Data, setData] = useState(null);
+  var [Data, setData] = useState(null);
 
   // useEffect(() => {
   //   const starCountRef = RDB.ref("Data/");
@@ -18,37 +18,41 @@ var TestPage = ({ SignInWithGoogle, Auth, SetProfile, LogOut }) => {
   //   });
   // }, []);
 
-  //   var starCountRef = RDB.ref("posts/" + postId + "/starCount");
+  // var starCountRef = RDB.ref("posts/" + postId + "/starCount");
 
-  //   console.log(starCountRef.on)
+  // console.log(starCountRef.on)
 
-//   var AddDoc = async () => {
-//     var Doc = {
-//       name: "kashif",
-//       id: "123",
-//     };
+  // var AddDoc = async () => {
+  //   var Doc = {
+  //     name: "kashif",
+  //     id: "123",
+  //   };
 
-//     var res = await RDB.ref("Data").push(Doc);
-//     // console.log(res);
-//     // console.log(res.key);
-//   };
+  // var res = await RDB.ref("Data").push(Doc);
+  // console.log(res);
+  // console.log(res.key);
 
-//   console.log("Rerendering");
+  useEffect(() => {
+    // const starCountRef = RDB.ref("Requests/");
+    // starCountRef.on("value", (snapshot) => {
+    //   if (snapshot.exists()) {
+    //     const data = snapshot.val();
+    //     console.log(data);
+    //     setData(data);
+    //   }
+    // });
+  }, []);
+
+  console.log("Rerendering");
   return (
-    <div style={{ display: "flex", flexFlow: "column" }}>
-      <button > Click ME </button>
+    <div>
+      <button onClick={() => {
+        const Requests = RDB.ref("Requests/");
+        Requests.child("idds2").set({name:'kashif',Arr:["kashif","hamza"]})
 
-      {/* <button
-                onClick={()=> SignInWithGoogle()}
-            >google sign in</button>
 
-            <button
-                onClick={()=> SetProfile(profile)}
-            >update profile</button>
 
-            <button
-                onClick={()=> LogOut()}
-            >logout</button> */}
+      }}> Click ME </button>
     </div>
   );
 };
