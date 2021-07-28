@@ -5,8 +5,9 @@ import image from './../../Assests/Authpic1.png';
 import {ShowModal} from '../../Redux/Modal/ModalActions'
 import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
+import CreateProjectForm from '../CreateProjectForm/CreateProjectForm';
 
-const PostCard = ({classes, ShowModal, project, editable=false, onEdit=null, onDelete=null, onLike=null, onComment=null}) => {
+const PostCard = ({classes, ShowModal, project, editable=false, onDelete=null, onLike=null, onComment=null}) => {
     const { id, match, postedBy, postedAt, duration, location, title, description, keywords } = project
     return(
         <div className={classes.container}>
@@ -36,7 +37,7 @@ const PostCard = ({classes, ShowModal, project, editable=false, onEdit=null, onD
                 {
                     editable?
                     <>
-                        <div className="edit" onClick={onEdit}><b><i className="fas fa-pencil-alt"></i>Edit</b></div>
+                        <div className="edit" onClick={ () => ShowModal(CreateProjectForm, project) }><b><i className="fas fa-pencil-alt"></i>Edit</b></div>
                         <div className="delete" onClick={onDelete}><b><i className="far fa-trash-alt"></i>Delete</b></div>
                     </>
                     :
