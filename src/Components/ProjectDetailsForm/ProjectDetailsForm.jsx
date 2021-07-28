@@ -4,6 +4,7 @@ import { useStyles } from "./projectDetailsForm.style";
 import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import { CreateCollaborationRequest } from "./../../Redux/Requests/RequestsActions";
+import { v4 as Uuid } from 'uuid';
 
 const ProjectDetailsForm = ({
   classes,
@@ -87,6 +88,7 @@ const ProjectDetailsForm = ({
                   title,
                   pid: id,
                   info: myInfo,
+                  rid : Uuid(),
                 };
                 CreateCollaborationRequest(Obj);
               }}

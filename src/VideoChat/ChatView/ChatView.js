@@ -47,7 +47,7 @@ var ChatView = ({ Socket, Data, EndCall }) => {
     });
 
     peer.on("signal", (data) => {
-      console.log("recieved mu signal data")
+      console.log("recieved my signal data")
       Socket.emit("callUser", {
         caller: Data.caller,
         to: Data.to,
@@ -73,25 +73,25 @@ var ChatView = ({ Socket, Data, EndCall }) => {
   var acceptCall = () => {
     console.log("accepting call...")
 
-    const peer = new Peer({
+    const peer1 = new Peer({
       initiator: false,
 			trickle: false,
 			stream: myStream
     });
 
-    peer.on("signal", (data) => {
+    peer1.on("signal", (data) => {
       console.log("Answering multiple time")
       Socket.emit("answerCall", { signalData: data, to: Data.caller.id })
     });
 
-    peer.on("stream", (stream) => {
+    peer1.on("stream", (stream) => {
       console.log("user video stream found")
       userVideoRef.current.srcObject = stream;
     });
 
-    peer.signal(CallerData);
+    peer1.signal(Data.signalData);
 
-    connectionRef.current = peer;
+    connectionRef.current = peer1;
 
     setCallInProcess(false);
     // setCallAccepted(true);

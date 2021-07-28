@@ -5,8 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
 import { connect } from 'react-redux';
 import {LogOut} from '../../Redux/Auth/authActions'
+import {CallUser} from '../../Redux/IncomingCall/IncomingCallActions'
 
-var LogOutButton = ({ picture,LogOut })=> {
+var LogOutButton = ({ picture,LogOut,CallUser })=> {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -19,7 +20,20 @@ var LogOutButton = ({ picture,LogOut })=> {
   };
 
   return (
-    <div className="flex-around">
+    <div className="flex-around"
+    
+    onClick={()=> CallUser({
+      initiator: true,
+      caller: {
+        id: "w2ydAVYwXefQ68LXlugmDPy4S4I3",
+        name: "kashif mughal",
+        picture:
+          "https://firebasestorage.googleapis.com/v0/b/ingenious-ecd53.appspot.com/o/images%2Fef2989e3-1587-4302-b9ef-bef8bfe98764.JPG?alt=media&token=fdb3363e-7d91-411a-8853-c21d2fff7816",
+      },
+      to: "0NYFblgI7UTtD95CEOaBku2YjUi2",
+   })}
+    
+    >
       <Button
         aria-controls="fade-menu"
         aria-haspopup="true"
@@ -28,16 +42,7 @@ var LogOutButton = ({ picture,LogOut })=> {
         <div className="flex">
           <div className="nav-pic-cont">
             <img
-              // onClick={()=> CallUser({
-              //    initiator: true,
-              //    caller: {
-              //      id: "w2ydAVYwXefQ68LXlugmDPy4S4I3",
-              //      name: "kashif mughal",
-              //      picture:
-              //        "https://firebasestorage.googleapis.com/v0/b/ingenious-ecd53.appspot.com/o/images%2Fef2989e3-1587-4302-b9ef-bef8bfe98764.JPG?alt=media&token=fdb3363e-7d91-411a-8853-c21d2fff7816",
-              //    },
-              //    to: "0NYFblgI7UTtD95CEOaBku2YjUi2",
-              // })}
+              
 
               className="navbar-picture"
               src={
@@ -70,6 +75,7 @@ var LogOutButton = ({ picture,LogOut })=> {
 }
 
 const actions = {
+  CallUser,
   LogOut
 }
 
