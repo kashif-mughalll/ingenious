@@ -1,9 +1,8 @@
 export const useStyles = () => ({
     container: {
-        width: '60rem',
         padding: '3rem',
         backgroundColor: 'white',
-        maxHeight: '80vh',
+        maxHeight: '75vh',
         borderRadius: '1rem',
         overflowY: 'scroll',
         '&::-webkit-scrollbar': {

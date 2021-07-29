@@ -7,9 +7,13 @@ import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
 import { v4 as Uuid } from "uuid";
-import { PostMyProject } from "./../../Redux/PostedProjects/PostedProjectsAction";
+import {
+  PostMyProject,
+  UpdateMyProject,
+} from "./../../Redux/PostedProjects/PostedProjectsAction";
 import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import { HideModal } from "../../Redux/Modal/ModalActions";
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -25,10 +29,13 @@ var CreateProjectForm = ({
   PostMyProject,
   Data,
   ShowLoader,
-  HideLoader
+  HideLoader,
+  UpdateMyProject,
+  HideModal
 }) => {
   const history = useHistory();
   const {
+    id,
     postedAt = "",
     duration = "",
     title = "",
@@ -103,14 +110,20 @@ var CreateProjectForm = ({
         location: Location,
       };
       ShowLoader();
-      await PostMyProject(Obj);
+      if (Data) {
+        Obj.id = id;
+        await UpdateMyProject(Obj);
+        await HideModal();
+      } else await PostMyProject(Obj);
       HideLoader();
-      history.push('/projects/myprojects')
+      history.push("/projects/myprojects");
     }
   };
   
   return (
-    <div className={classes.container+' '+ (Data ? classes.modalView : null)}>
+    <div
+      className={Data ? classes.modalView + " res-class-3" : classes.container}
+    >
       <FormControl fullWidth>
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
@@ -213,6 +226,8 @@ var actions = {
   PostMyProject,
   ShowLoader,
   HideLoader,
+  UpdateMyProject,
+  HideModal
 };
 
 export default connect(mapState, actions)(withStyles(style)(CreateProjectForm));

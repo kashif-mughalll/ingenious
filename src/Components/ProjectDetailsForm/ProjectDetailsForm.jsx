@@ -38,7 +38,7 @@ const ProjectDetailsForm = ({
   const [KeyWordsError, setKeyWordsError] = useState(false);
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container + " res-class-2"}>
       <div className={classes.authDescription}>
         <div className={classes.avatar}>
           <img src={postedBy.picture} alt="Author Image" />

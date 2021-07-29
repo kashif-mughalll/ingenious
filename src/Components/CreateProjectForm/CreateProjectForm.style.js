@@ -49,10 +49,22 @@ export const style = ()=> ({
       }
     },
     modalView: {
-      width: '70rem',
-      height: '60rem',
-      padding: '3rem 5rem',
+      height: '65vh',
+      padding: '3rem',
       overflowY: 'scroll',
-      borderRadius: '1.5rem'
+      borderRadius: '1.5rem',
+      display : 'flex',
+      flexDirection : "column",
+      backgroundColor: 'white',
+      '&::-webkit-scrollbar': {
+          width: '6px'
+      },
+      '&::-webkit-scrollbar-thumb': {
+          background: '888', 
+          borderRadius: '5px',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+          background: '#555',
+      }
     }
   });
