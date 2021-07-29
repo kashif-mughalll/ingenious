@@ -9,11 +9,14 @@ export const useStyles = () => ({
     leftBar: {
         marginRight: '2rem'
     },
+    rightBar: {
+        width: '100%',
+    },
     avatar:{
         height: '22rem',
         '& img':{
-            width: '15rem',
-            height: '15rem',
+            width: '12rem',
+            height: '12rem',
             padding: '2rem',
             borderRadius: '50%',
             overflow: 'hidden',
@@ -26,7 +29,7 @@ export const useStyles = () => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        boxShadow: '0rem 0rem 1rem -0.5rem',
+        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
         '& i': {
             marginRight: '1rem'
@@ -53,7 +56,7 @@ export const useStyles = () => ({
         fontStyle: 'italic',
         padding: '1rem',
         margin: '2rem 0',
-        boxShadow: '0rem 0rem 1rem -0.5rem',
+        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
         '& h1': {
             fontSize: '2rem',
@@ -66,7 +69,7 @@ export const useStyles = () => ({
     },
     domain: {
         padding: '1rem',
-        boxShadow: '0rem 0rem 1rem -0.5rem',
+        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
     },
     domainHeading: {
@@ -85,10 +88,11 @@ export const useStyles = () => ({
     },
     projects: {
         padding: '1rem',
-        boxShadow: '0rem 0rem 1rem -0.5rem',
+        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
     },
     projectHeading: {
+        marginBottom: '2rem',
         color: 'rgb(0, 62, 155)',
         fontStyle: 'italic',
         marginTop: '2rem'

@@ -8,10 +8,10 @@ export const useStyles = () => ({
     },
     pictureBox: {
         '& img': {
-            width: '2.5rem',
-            height: '2.5rem',
-            borderRadius: '0.6rem',
-            border: '0.3rem solid #999',
+            width: '2.6rem',
+            height: '2.6rem',
+            borderRadius: '50%',
+            border: '0.2rem solid white',
         }
     },
     groupPictureBox: {
