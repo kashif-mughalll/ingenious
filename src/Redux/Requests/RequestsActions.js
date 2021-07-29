@@ -1,7 +1,6 @@
 import { RDB } from "../../Firebase/Firebase-Configuration";
 
 export var CreateCollaborationRequest = (Obj) => async (dispatch, getState) => {
-  console.log(Obj)
   try {
     const id = Obj.id;
     RDB.ref(`Requests/${id}`).once("value", (snapshot) => {
@@ -27,7 +26,6 @@ export var GetCollaborationRequests = () => async (dispatch, getState) => {
     Requests.on("value", (snapshot) => {
       if (snapshot.exists()) {
         const List = snapshot.val().list;
-        console.log(List);
         dispatch({
           type: "SET_REQUESTS",
           payload: List,
