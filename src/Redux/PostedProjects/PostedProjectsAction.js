@@ -24,9 +24,7 @@ export var UpdateMyProject = (project) => async (dispatch, getState) => {
       if (project.id != element.id) Projects.push(element);
     });
     Projects.push(project);
-
-    await DB.collection("Projects").doc(project.id).set(project);
-    
+    await DB.collection("Projects").doc(project.id).set(project);    
     dispatch({
       type: "SET_POSTED_PROJECTS",
       payload: Projects,

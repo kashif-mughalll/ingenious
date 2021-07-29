@@ -111,9 +111,9 @@ var CreateProjectForm = ({
       };
       ShowLoader();
       if (Data) {
+        Obj.id = id;
         await UpdateMyProject(Obj);
-        HideModal();
-        console.log("updating")
+        await HideModal();
       } else await PostMyProject(Obj);
       HideLoader();
       history.push("/projects/myprojects");
