@@ -44,13 +44,6 @@ export var AddCollaborator = (Obj) => async (dispatch, getState) => {
     await DB.collection("Projects").doc(Obj.pid).update({
       collaborators: Arr,
     });
-
-    // console.log(response)
-
-    // dispatch({
-    //   type: "SET_PROJECTS",
-    //   // payload: projects,
-    // });
   } catch (error) {
     console.error(error);
   }
