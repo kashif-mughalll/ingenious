@@ -35,8 +35,24 @@ export const style = ()=> ({
       padding: '1rem',
       width : "100%",
       display : 'flex',
-      justifyContent : 'center',
-      flexFlow : "column",
+      flexDirection : "column",
       backgroundColor: 'white',
+      '&::-webkit-scrollbar': {
+          width: '6px'
+      },
+      '&::-webkit-scrollbar-thumb': {
+          background: '888', 
+          borderRadius: '5px',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+          background: '#555',
+      }
     },
+    modalView: {
+      width: '70rem',
+      height: '60rem',
+      padding: '3rem 5rem',
+      overflowY: 'scroll',
+      borderRadius: '1.5rem'
+    }
   });

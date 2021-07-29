@@ -23,7 +23,7 @@ var CreateProjectForm = ({
   classes,
   auth,
   PostMyProject,
-  Data = {},
+  Data,
   ShowLoader,
   HideLoader
 }) => {
@@ -35,7 +35,7 @@ var CreateProjectForm = ({
     description = "",
     location = "",
     keywords = [],
-  } = Data;
+  } = Data || {};
   // const history = useHistory();
   const datesArray = duration.split(" ");
 
@@ -97,7 +97,7 @@ var CreateProjectForm = ({
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container+' '+ (Data ? classes.modalView : null)}>
       <FormControl fullWidth>
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
