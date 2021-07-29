@@ -56,8 +56,7 @@ export const useStyles = () => ({
         '& img':{
             width: '4rem',
             height: '4rem',
-            padding: '0 0.5rem',
-            paddingLeft : '1rem',
+            padding: '0 1rem',
             borderRadius: '50%',
             overflow: 'hidden',
         }

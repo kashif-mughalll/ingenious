@@ -1,7 +1,6 @@
 import { withStyles } from "@material-ui/core";
 import { useStyles } from "./postCard.style";
 import Chips from "./../Chips/Chips";
-import image from "./../../Assests/Authpic1.png";
 import { ShowModal } from "../../Redux/Modal/ModalActions";
 import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
@@ -27,6 +26,7 @@ const PostCard = ({
     title,
     description,
     keywords,
+    collaborators
   } = project;
   return (
     <div

@@ -24,7 +24,6 @@ const ProjectDetailsForm = ({
     keywords,
     id,
   } = Data;
-  console.log(Data);
   let myObj = {};
   for (let i = 0; i < keywords.length; i++) {
     myObj[keywords[i]] = false;
