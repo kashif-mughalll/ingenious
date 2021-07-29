@@ -13,7 +13,6 @@ const PostCard = ({
   ShowModal,
   project,
   editable = false,
-  onDelete = null,
   onLike = null,
   onComment = null,
 }) => {
