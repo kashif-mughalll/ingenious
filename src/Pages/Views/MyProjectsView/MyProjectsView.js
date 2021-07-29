@@ -9,8 +9,6 @@ var MyProjectsView = ({myProjects, GetMyProjects})=> {
         GetMyProjects();        
     }, [])
 
-    console.log(myProjects)
-
     return (
         <div className='my-project-view-container'>
             <h1 className='my-project-view-heading'>My Projects</h1>

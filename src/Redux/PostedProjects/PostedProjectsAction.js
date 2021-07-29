@@ -3,8 +3,7 @@ import { DB, RDB } from "../../Firebase/Firebase-Configuration";
 export var PostMyProject = (project) => async (dispatch, getState) => {
   try {
     let Projects = [...getState().PostedProjects];
-    let response = await DB.collection("Projects").doc(project.id).set(project);
-    console.log(response);
+    await DB.collection("Projects").doc(project.id).set(project);
     Projects.push({
       ...project,
       collaborators : [],

@@ -19,8 +19,6 @@ export var GetAllProjects = () => async (dispatch, getState) => {
       return 0;
     });
 
-    console.log(projects);
-
     dispatch({
       type: "SET_PROJECTS",
       payload: projects,
