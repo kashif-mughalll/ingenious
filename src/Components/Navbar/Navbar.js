@@ -57,8 +57,8 @@ var Navbar = ({picture,location,CallUser}) => {
               name="setting"
               link="/setting"
             />
-          </div>
-          <LogOutButton picture={picture} />          
+            <LogOutButton picture={picture} />  
+          </div>        
         </div>
       </div>
       <div></div>

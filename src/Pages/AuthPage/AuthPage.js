@@ -6,7 +6,6 @@ import AuthImage from "../../Assests/Authpic2.png";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import SignUpForm from "../../Components/SignUpForm/SignUpForm";
 import Logo from "../../Assests/Logo.png";
-import Footer from "../../Components/Footer/Footer";
 
 var AuthPage = ({ Auth }) => {
   const [ToogleForms, setToogleForms] = useState(true);
@@ -38,7 +37,6 @@ var AuthPage = ({ Auth }) => {
         <div className="auth-free-space"></div>
       </div>
       <br></br>
-      <Footer />
     </>
   );
 };

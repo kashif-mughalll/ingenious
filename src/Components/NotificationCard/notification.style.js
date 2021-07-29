@@ -27,7 +27,7 @@ export const useStyles = () => ({
         color : '#444'
     },
     buttons: {
-        width: '20rem',
+        width: '22rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -38,6 +38,7 @@ export const useStyles = () => ({
             padding: '1rem 0',
             borderRadius: '0.5rem',
             color: 'white',
+            margin : '0 0.3rem'
         }
     },
     accept: {
