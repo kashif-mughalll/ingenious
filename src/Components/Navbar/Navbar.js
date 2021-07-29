@@ -11,7 +11,6 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 var Navbar = ({picture,location,CallUser}) => {
   var token = String(location.pathname).split('/');
   const [state, setState] = useState(token[1] ? token[1] : 'home');
-  console.log(state)
 
   return (
     <div className="navbar">

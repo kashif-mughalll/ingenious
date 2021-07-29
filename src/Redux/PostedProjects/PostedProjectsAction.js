@@ -1,10 +1,9 @@
-import { DB } from "../../Firebase/Firebase-Configuration";
+import { DB, RDB } from "../../Firebase/Firebase-Configuration";
 
 export var PostMyProject = (project) => async (dispatch, getState) => {
   try {
     let Projects = [...getState().PostedProjects];
-    let response = await DB.collection("Projects").doc(project.id).set(project);
-    console.log(response);
+    await DB.collection("Projects").doc(project.id).set(project);
     Projects.push({
       ...project,
       collaborators : [],
@@ -33,9 +32,14 @@ export var GetMyProjects = () => async (dispatch, getState) => {
   }
 };
 
-export var DeleteProject = (id) => async (dispatch) => {
+export var DeleteProject = (id) => async (dispatch,getState) => {
   try {    
     let response = await DB.collection("Projects").doc(id).delete();
+    const List = [];
+    getState().Requests.forEach((element) => {
+      if (element.pid != id) List.push(element);
+    });
+    await RDB.ref(`Requests/`).child(getState().Auth.id).set({ list: List });
   } catch (error) {
     console.log(error);
   }
