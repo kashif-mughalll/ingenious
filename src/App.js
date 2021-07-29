@@ -4,19 +4,16 @@ import Dashboard from "./Pages/DashBoard/Dashboard";
 import AuthPage from "./Pages/AuthPage/AuthPage";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import "./MediaQuery/MediaQuery.css";
-import PostCard from "./Components/PostCard/PostCard";
 import ModalContainer from "./Components/ModalContainer/ModalContainer";
-import { useEffect } from 'react';
-import Connection from './VideoChat/Connection/Connection';
-import TestPage from "./Pages/TestPage/TestPage";
+import Loader from './Components/LoaderContainer/Loader';
 
-var App = ({ Auth, Profile , Modal }) => {
+var App = ({ Auth, Profile , Modal ,loader}) => {
 
   return (
     <>
+      {loader ? <Loader/> : null}
       {Modal ? <ModalContainer/> : null}
       {Auth ? (Profile ? <Dashboard /> : <ProfilePage />) : <AuthPage />}
-      {/* <TestPage/> */}
     </>
   );
 };
@@ -25,7 +22,8 @@ const mapState = (state) => {
   return {
     Auth: state.Auth,
     Profile: state.Profile,
-    Modal : state.Modal
+    Modal : state.Modal,
+    loader : state.Loader
   };
 };
 

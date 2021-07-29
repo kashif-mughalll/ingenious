@@ -7,6 +7,7 @@ import MaterialUiPhoneNumber from "material-ui-phone-number";
 import DomainSelector from "./../DomainSelector/DomainSelector";
 import { SetProfile } from "../../Redux/Profile/ProfileAcions";
 import { connect } from "react-redux";
+import { HideLoader, ShowLoader } from './../../Redux/Loader/LoaderActions';
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -27,6 +28,8 @@ var ProfileEditForm = ({
   about,
   picture,
   id,
+  ShowLoader,
+  HideLoader
 }) => {
   const [FullName, setFullName] = useState(name ? name : "");
   const [Email, setEmail] = useState(email ? email : "");
@@ -59,7 +62,7 @@ var ProfileEditForm = ({
 
   //Validations
 
-  const FormValidation = () => {
+  const FormValidation = async () => {
     if (FullName == "" || !FullName) setNameError(true)
     else if (String(Phone).length != 15) setPhoneError(true)
     else if (Dob == "") setDobError(true)
@@ -72,6 +75,7 @@ var ProfileEditForm = ({
       !DobError &&
       !PhoneError
     ) {
+      ShowLoader()
       var profile = {
         keywords: FilterKeyWorkds(KeyWords),
         contact: Phone,
@@ -84,7 +88,8 @@ var ProfileEditForm = ({
         picture: picture,
         id: id,
       };
-      SetProfile(profile);
+      await SetProfile(profile);
+      HideLoader();
     }
   };
 
@@ -203,6 +208,8 @@ var ProfileEditForm = ({
 
 var actions = {
   SetProfile,
+  ShowLoader,
+  HideLoader
 };
 
 export default connect(null, actions)(withStyles(style)(ProfileEditForm));

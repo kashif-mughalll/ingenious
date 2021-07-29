@@ -3,8 +3,21 @@ import { useStyles } from "./deletePopUp.style";
 import { DeleteRequest } from "./../../Redux/Requests/RequestsActions";
 import { connect } from "react-redux";
 import { HideModal } from "../../Redux/Modal/ModalActions";
-import { DeleteProject, GetMyProjects } from "../../Redux/PostedProjects/PostedProjectsAction";
-const DeletePopUp = ({ classes, DeleteRequest, DeleteProject, HideModal, Data, GetMyProjects }) => {
+import {
+  DeleteProject,
+  GetMyProjects,
+} from "../../Redux/PostedProjects/PostedProjectsAction";
+import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
+const DeletePopUp = ({
+  classes,
+  DeleteRequest,
+  DeleteProject,
+  HideModal,
+  Data,
+  GetMyProjects,
+  ShowLoader,
+  HideLoader,
+}) => {
   return (
     <div className={classes.container}>
       <div className={classes.heading}>
@@ -14,22 +27,26 @@ const DeletePopUp = ({ classes, DeleteRequest, DeleteProject, HideModal, Data, G
         Are you sure want to delete this?
       </div>
       <div className={classes.buttons}>
-        <button className={classes.accept} onClick={HideModal}>Cancel</button>
+        <button className={classes.accept} onClick={HideModal}>
+          Cancel
+        </button>
         <button
           className={classes.reject}
           onClick={async () => {
+            ShowLoader();
             switch (Data[0]) {
-              case 'notification':
-                DeleteRequest(Data[1]);
+              case "notification":
+                await DeleteRequest(Data[1]);
                 break;
-              case 'project':
+              case "project":
                 await DeleteProject(Data[1]);
-                GetMyProjects();
-                break
+                await GetMyProjects();
+                break;
               default:
                 break;
-            }            
+            }
             HideModal();
+            HideLoader();
           }}
         >
           Delete
@@ -43,7 +60,9 @@ const actions = {
   GetMyProjects,
   DeleteRequest,
   DeleteProject,
-  HideModal
+  HideModal,
+  ShowLoader,
+  HideLoader,
 };
 
 export default connect(null, actions)(withStyles(useStyles)(DeletePopUp));

@@ -1,4 +1,4 @@
-import React, { useRef ,useState } from "react";
+import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -6,8 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import { useStyles } from "./form.style";
 import ButtonGoogleLogin from "../ButtonGoogleLogin/ButtonGoogleLogin";
-import { LoginWithEmailPass } from './../../Redux/Auth/authActions';
-import { connect } from 'react-redux';
+import { LoginWithEmailPass } from "./../../Redux/Auth/authActions";
+import { connect } from "react-redux";
+import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
 
 const validationSchema = yup.object({
   email: yup
@@ -20,7 +21,13 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
+const LoginForm = ({
+  classes,
+  toggleHandler,
+  LoginWithEmailPass,
+  ShowLoader,
+  HideLoader,
+}) => {
   const [Error, setError] = useState(false);
   const [Error2, setError2] = useState(false);
   const Divref = useRef(null);
@@ -31,8 +38,10 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: ({email,password}) => {
-      LoginWithEmailPass(email,password,setError,setError2);
+    onSubmit: async ({ email, password }) => {
+      ShowLoader();
+      await LoginWithEmailPass(email, password, setError, setError2);
+      HideLoader();
     },
   });
 
@@ -46,7 +55,7 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
           InputProps={{
             classes: {
               input: classes.resize,
-            }
+            },
           }}
           fullWidth
           autoFocus
@@ -54,9 +63,18 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
           name="email"
           label="Email"
           value={formik.values.email}
-          onChange={(e)=> { setError(false); formik.handleChange(e);}}
-          error={(formik.touched.email && Boolean(formik.errors.email)) || Error}
-          helperText={Error ? 'Incorrect email address' : formik.touched.email && formik.errors.email}
+          onChange={(e) => {
+            setError(false);
+            formik.handleChange(e);
+          }}
+          error={
+            (formik.touched.email && Boolean(formik.errors.email)) || Error
+          }
+          helperText={
+            Error
+              ? "Incorrect email address"
+              : formik.touched.email && formik.errors.email
+          }
         />
         <TextField
           variant="outlined"
@@ -72,9 +90,19 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
           label="Password"
           type="password"
           value={formik.values.password}
-          onChange={(e)=> { setError2(false); formik.handleChange(e);}}
-          error={(formik.touched.password && Boolean(formik.errors.password)) || Error2}
-          helperText={Error2 ? 'Incorrect password try again' : formik.touched.password && formik.errors.password}
+          onChange={(e) => {
+            setError2(false);
+            formik.handleChange(e);
+          }}
+          error={
+            (formik.touched.password && Boolean(formik.errors.password)) ||
+            Error2
+          }
+          helperText={
+            Error2
+              ? "Incorrect password try again"
+              : formik.touched.password && formik.errors.password
+          }
         />
         <ButtonGoogleLogin />
         <div className={classes.btnContainer}>
@@ -110,6 +138,8 @@ const LoginForm = ({ classes, toggleHandler , LoginWithEmailPass }) => {
 
 var actions = {
   LoginWithEmailPass,
-}
+  ShowLoader,
+  HideLoader,
+};
 
-export default connect(null,actions)(withStyles(useStyles)(LoginForm));
+export default connect(null, actions)(withStyles(useStyles)(LoginForm));
