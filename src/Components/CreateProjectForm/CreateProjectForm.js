@@ -69,6 +69,19 @@ var CreateProjectForm = ({
     feild5: false,
     feild6: false,
   });
+  useEffect(()=>{
+    if(keywords.length>0) {
+      var selectedKeywords = {};
+      console.log(keywords);
+      for (let i = 0; i < keywords.length; i++) {
+        selectedKeywords[keywords[i]] = true;
+      }
+      setKeyWords({
+        ...KeyWords,
+        ...selectedKeywords,
+      })
+    }
+  },[Data])
 
   // Error States
 
@@ -106,7 +119,7 @@ var CreateProjectForm = ({
       history.push("/projects/myprojects");
     }
   };
-
+  
   return (
     <div
       className={Data ? classes.modalView + " res-class-3" : classes.container}
