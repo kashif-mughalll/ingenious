@@ -87,5 +87,8 @@ export const useStyles = () => ({
             fontSize: '1.5rem',
             margin: '0.7rem 0'
         }
+    },
+    collaborators: {
+        marginTop: '2rem'
     }
 });
