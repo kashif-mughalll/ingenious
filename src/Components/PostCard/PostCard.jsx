@@ -49,7 +49,7 @@ const PostCard = ({
             </div>
           </div>
         </div>
-        <div className={classes.dates}>
+        <div className={"res-class-1"}>
           <div className={classes.postDate}>
             <b>Posted At : </b>
             {postedAt}

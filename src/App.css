@@ -34,3 +34,21 @@ html {
   justify-content: center;
 }
 
+
+.res-class-1{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-right: 1.5rem;
+  font-size: 1.2rem;
+
+  color: #999;
+        
+}
+
+.res-class-1:first-child{
+  margin-bottom : 0.4rem;
+}
+

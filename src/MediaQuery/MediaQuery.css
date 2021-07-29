@@ -85,8 +85,6 @@
   }
 }
 
-@media only screen and (max-width: 550px) {
-}
 
 @media only screen and (max-width: 450px) {
 
@@ -101,5 +99,12 @@
   .profile-page-form-container {
     padding-left: 2rem;
     width: 40rem;
+  }
+}
+
+
+@media only screen and (max-width: 300px) {
+  .res-class-1{
+    display: none;
   }
 }
