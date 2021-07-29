@@ -10,10 +10,10 @@ export const useStyles = () => ({
         }
     },
     avatar: {
-        height: '7.4rem',
+        height: '6.3rem',
         '& img': {
-            width: '6rem',
-            height: '6rem',
+            width: '5rem',
+            height: '5rem',
             margin: '0.7rem',
             borderRadius: '50%',
             overflow: 'hidden',
@@ -24,6 +24,7 @@ export const useStyles = () => ({
         fontSize: '1.4rem',
         padding: '1rem',
         textAlign: 'justify',
+        color : '#444'
     },
     buttons: {
         width: '20rem',

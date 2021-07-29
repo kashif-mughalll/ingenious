@@ -17,6 +17,10 @@ export const useStyles = () => ({
             background: '#555',
         }
     },
+    errorClass:{
+        fontSize: '1.3rem',
+        color : "red",
+    },
     authDescription: {
         display: 'flex',
         alignItems: 'center',

@@ -4,15 +4,15 @@ import { useStyles } from "./projectDetailsForm.style";
 import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import { CreateCollaborationRequest } from "./../../Redux/Requests/RequestsActions";
-import { v4 as Uuid } from 'uuid';
-import {HideModal} from '../../Redux/Modal/ModalActions'
+import { v4 as Uuid } from "uuid";
+import { HideModal } from "../../Redux/Modal/ModalActions";
 
 const ProjectDetailsForm = ({
   classes,
   Data,
   myInfo,
   CreateCollaborationRequest,
-  HideModal
+  HideModal,
 }) => {
   const {
     postedBy,
@@ -79,21 +79,24 @@ const ProjectDetailsForm = ({
               setKeyWords={setDomain}
               setKeyWordsError={setKeyWordsError}
             />
+            {KeyWordsError ? <p className={classes.errorClass}>Select atleat one domain</p> : ''}
           </div>
           <div className={classes.reqButton}>
             <button
               className={classes.button}
-              onClick={() => {
-                var Obj = {
-                  id: postedBy.id,
-                  keywords: FilterKeyWorkds(domain),
-                  title,
-                  pid: id,
-                  info: myInfo,
-                  rid : Uuid(),
-                };
-                CreateCollaborationRequest(Obj);
-                HideModal();
+              onClick={async () => {
+                if (FilterKeyWorkds(domain).length != 0) {
+                  var Obj = {
+                    id: postedBy.id,
+                    keywords: FilterKeyWorkds(domain),
+                    title,
+                    pid: id,
+                    info: myInfo,
+                    rid: Uuid(),
+                  };
+                  await CreateCollaborationRequest(Obj);
+                  HideModal();
+                } else setKeyWordsError(true);
               }}
             >
               Request for Collaboraation
@@ -117,7 +120,7 @@ var mapState = (state) => {
 
 const actions = {
   CreateCollaborationRequest,
-  HideModal
+  HideModal,
 };
 
 export default withStyles(useStyles)(
