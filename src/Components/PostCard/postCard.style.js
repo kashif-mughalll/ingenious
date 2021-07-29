@@ -33,17 +33,19 @@ export const useStyles = () => ({
         fontSize: '1.6rem',
         color: '#333',
         paddingBottom: '1rem',
-        // borderTop: '0.1rem solid #bbb',
         opacity: '0.8',
         '& i': {
             paddingRight: '0.7rem',
             fontSize: '1.7rem',
-            color: '#777'
+            color: '#777',
         },
         '& > div:hover': {
             color: 'rgb(0, 62, 155)',
             cursor: 'pointer',
             opacity: '1',
+            '& i': {
+                color: 'rgb(0, 62, 155)'
+            }
         }
     },
     author: {

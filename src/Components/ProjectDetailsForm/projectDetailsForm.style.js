@@ -36,17 +36,20 @@ export const useStyles = () => ({
     },
     authName: {
         fontWeight: 'bold',
-        fontSize: '2rem',
+        fontSize: '1.5rem',
         fontStyle: 'italic',
+        color: 'rgb(0, 101, 114)',
     },
     projectName: {
-        fontSize: '4rem',
+        fontSize: '2.4rem',
         fontWeight: 'bold',
         marginTop: '2rem',
+        color: '#666',
     },
     dates: {
         marginTop: '3rem',
         fontSize: '1.3rem',
+        color: '#888',
         '& b': {
             marginRight: '0.7rem',
         },
@@ -56,11 +59,12 @@ export const useStyles = () => ({
     },
     description: {
         marginTop: '3rem',
+        color: '#666',
         '& b': {
-            fontSize: '2rem',
+            fontSize: '1.8rem',
         },
         '& div': {
-            fontSize: '1.5rem',
+            fontSize: '1.4rem',
             marginTop: '0.8rem',
         },
     },
