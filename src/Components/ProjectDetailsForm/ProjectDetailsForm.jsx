@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { CreateCollaborationRequest } from "./../../Redux/Requests/RequestsActions";
 import { v4 as Uuid } from "uuid";
 import { HideModal } from "../../Redux/Modal/ModalActions";
+import Collaborator from "../Collaborators/Collaborator";
 
 const ProjectDetailsForm = ({
   classes,
@@ -23,6 +24,7 @@ const ProjectDetailsForm = ({
     location,
     keywords,
     id,
+    collaborators
   } = Data;
   let myObj = {};
   for (let i = 0; i < keywords.length; i++) {
@@ -58,6 +60,11 @@ const ProjectDetailsForm = ({
       <div className={classes.description}>
         <b>Description</b>
         <div>{description}</div>
+      </div>
+      <div className={classes.collaborators}>
+        {
+          collaborators ? collaborators.map( person => <Collaborator person={person} />) : null
+        }
       </div>
       {!display ? (
         <div className={classes.colButton}>

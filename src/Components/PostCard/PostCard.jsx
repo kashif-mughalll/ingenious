@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import ProjectDetailsForm from "../ProjectDetailsForm/ProjectDetailsForm";
 import CreateProjectForm from "../CreateProjectForm/CreateProjectForm";
 import DeletePopUp from "../DeletePopUp/DeletePopUp";
+import Collaborator from "../Collaborators/Collaborator";
+import CollaboratorsGroup from "../Collaborators/CollaboratorsGroup";
 
 const PostCard = ({
   classes,
@@ -68,6 +70,13 @@ const PostCard = ({
             <Chips key={name} name={name} />
           ))}
         </div>
+        {
+          (editable && collaborators) ?
+          collaborators.map( person => <Collaborator person={person} />) :
+          collaborators ?
+          <CollaboratorsGroup collaborators={collaborators} /> :
+          null
+        }
       </div>
       <div className={classes.footer}>
         {editable ? (
