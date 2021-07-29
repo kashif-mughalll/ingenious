@@ -1,12 +1,18 @@
-import React from 'react'
+import { connect } from 'react-redux';
+import CollaborationCard from '../../../Components/CollaborationCard/CollaborationCard';
 import './MyCollaborationView.css'
 
-var MyCollaborationView = ({})=> {
+var MyCollaborationView = ({ requests })=> {
     return (
-        <div>
-            MyCollaborationView
+        <div className="my-collaboration-view-cont">
+            <h1 className="my-collaboration-view-head">My Collaborations</h1>
+            {requests.map( request => <CollaborationCard key={request.rid} {...request} />)}
         </div>
     )
 }
 
-export default MyCollaborationView
+const mapState = (state) => ({
+    requests : state.Requests
+});
+  
+export default connect(mapState)(MyCollaborationView)

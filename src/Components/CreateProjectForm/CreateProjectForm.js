@@ -43,7 +43,6 @@ var CreateProjectForm = ({
     location = "",
     keywords = [],
   } = Data || {};
-  // const history = useHistory();
   const datesArray = duration.split(" ");
 
   const [ProjectTitle, setProjectTitle] = useState(title);
@@ -112,6 +111,7 @@ var CreateProjectForm = ({
       ShowLoader();
       if (Data) {
         Obj.id = id;
+        Obj.postedAt = postedAt;
         await UpdateMyProject(Obj);
         await HideModal();
       } else await PostMyProject(Obj);
