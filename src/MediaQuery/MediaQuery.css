@@ -25,6 +25,10 @@
     font-size: 0.43em;
   }
 
+  .res-class-3{
+    width: 55rem;
+  }
+
   .navbar {
     grid-template-columns: 4rem 1fr 3rem;
   }
@@ -56,6 +60,7 @@
   }
 
   .profile-page-container3 {
+    padding: 2rem 0;
     grid-template-columns: min-content;
     grid-template-rows: 25rem 1fr;
   }
@@ -90,6 +95,14 @@
 
   html {
     font-size: 0.39em;
+  }
+
+  .res-class-2{
+    width : 39rem
+  }
+
+  .res-class-3{
+    width: 39rem;
   }
 
   .profile-page-container2 {

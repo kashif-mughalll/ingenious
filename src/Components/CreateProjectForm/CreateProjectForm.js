@@ -97,7 +97,7 @@ var CreateProjectForm = ({
   };
 
   return (
-    <div className={classes.container+' '+ (Data ? classes.modalView : null)}>
+    <div className={Data ? classes.modalView + ' res-class-3' : classes.container}>
       <FormControl fullWidth>
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
