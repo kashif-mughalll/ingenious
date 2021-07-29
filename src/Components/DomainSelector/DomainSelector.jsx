@@ -20,8 +20,6 @@ const DomainSelector = ({
             name={name}
             checked={checked}
             handleChange={(e) => {
-              console.log(e);
-              // e.target.parentNode.style.backgroundColor='blue';
               setKeyWordsError(false);
               setKeyWords({
                 ...keyWords,

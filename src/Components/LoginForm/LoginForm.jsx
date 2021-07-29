@@ -57,6 +57,9 @@ const LoginForm = ({
               input: classes.resize,
             },
           }}
+          classes={{
+            outlined: classes.label
+          }}
           fullWidth
           autoFocus
           id="email"
