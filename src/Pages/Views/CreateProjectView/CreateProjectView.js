@@ -2,10 +2,10 @@ import React from "react";
 import CreateProjectForm from "../../../Components/CreateProjectForm/CreateProjectForm";
 import "./CreateProjectView.css";
 
-var CreateProjectView = ({}) => {
+var CreateProjectView = ({setRouter}) => {
   return (
     <div className="flex">
-      <CreateProjectForm />
+      <CreateProjectForm/>
     </div>
   );
 };

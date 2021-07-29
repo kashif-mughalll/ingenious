@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 var ProjectView = ({ location }) => {
   var token = String(location.pathname).split("/");
-  const [state, setState] = useState(token[2] ? token[2] : "My Projects");
+  const [state, setState] = useState(token[2] ? token[2] : "myprojects");
   return (
     <div className="project-view-cont">
       <div className="project-router-btns">

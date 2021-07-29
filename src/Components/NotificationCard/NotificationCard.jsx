@@ -5,6 +5,7 @@ import { ShowModal } from "../../Redux/Modal/ModalActions";
 import DeletePopUp from "../DeletePopUp/DeletePopUp";
 import {AddCollaborator} from '../../Redux/Projects/ProjectsActions'
 import { DeleteRequest } from './../../Redux/Requests/RequestsActions';
+import { HideLoader, ShowLoader } from './../../Redux/Loader/LoaderActions';
 
 const NotificationCard = ({
   AddCollaborator,
@@ -16,7 +17,9 @@ const NotificationCard = ({
   info,
   keywords,
   title,
-  DeleteRequest
+  DeleteRequest,
+  ShowLoader,
+  HideLoader
 }) => {
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
@@ -39,6 +42,7 @@ const NotificationCard = ({
         <button
           className={classes.accept}
           onClick={async () => {
+            ShowLoader();
             var Obj = {
               pid,
               name : info.name,
@@ -48,7 +52,7 @@ const NotificationCard = ({
             }
             await AddCollaborator(Obj);
             await DeleteRequest(rid);
-
+            HideLoader();
           }}
         >
           <i className="fas fa-user-plus"></i>
@@ -72,7 +76,9 @@ const NotificationCard = ({
 const actions = {
   ShowModal,
   AddCollaborator,
-  DeleteRequest
+  DeleteRequest,
+  ShowLoader,
+  HideLoader
 };
 
 export default connect(null, actions)(withStyles(useStyles)(NotificationCard));

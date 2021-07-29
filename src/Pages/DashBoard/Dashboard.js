@@ -14,13 +14,14 @@ import {GetCollaborationRequests} from '../../Redux/Requests/RequestsActions'
 
 var Dashboard = ({call,GetCollaborationRequests}) => {
   useEffect(() => {
-    SocketConnection();    
+    console.log("Mounting Dashboard");
+    // SocketConnection();    
     GetCollaborationRequests();
   }, [])
 
   return (
     <>
-      {call ? <ChatView/> : null}
+      {/* {call ? <ChatView/> : null} */}
       <Navbar />
       <div className="dashboard">
         <div></div>

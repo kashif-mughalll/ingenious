@@ -7,6 +7,7 @@ import { CreateCollaborationRequest } from "./../../Redux/Requests/RequestsActio
 import { v4 as Uuid } from "uuid";
 import { HideModal } from "../../Redux/Modal/ModalActions";
 import Collaborator from "../Collaborators/Collaborator";
+import { HideLoader, ShowLoader } from './../../Redux/Loader/LoaderActions';
 
 const ProjectDetailsForm = ({
   classes,
@@ -14,6 +15,8 @@ const ProjectDetailsForm = ({
   myInfo,
   CreateCollaborationRequest,
   HideModal,
+  HideLoader,
+  ShowLoader
 }) => {
   const {
     postedBy,
@@ -92,6 +95,7 @@ const ProjectDetailsForm = ({
               className={classes.button}
               onClick={async () => {
                 if (FilterKeyWorkds(domain).length != 0) {
+                  ShowLoader()
                   var Obj = {
                     id: postedBy.id,
                     keywords: FilterKeyWorkds(domain),
@@ -102,6 +106,7 @@ const ProjectDetailsForm = ({
                   };
                   await CreateCollaborationRequest(Obj);
                   HideModal();
+                  HideLoader();
                 } else setKeyWordsError(true);
               }}
             >
@@ -127,6 +132,8 @@ var mapState = (state) => {
 const actions = {
   CreateCollaborationRequest,
   HideModal,
+  ShowLoader,
+  HideLoader
 };
 
 export default withStyles(useStyles)(

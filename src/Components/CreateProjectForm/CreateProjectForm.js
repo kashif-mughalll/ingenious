@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
 import { v4 as Uuid } from "uuid";
 import { PostMyProject } from "./../../Redux/PostedProjects/PostedProjectsAction";
+import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
+import {useHistory} from 'react-router-dom'
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -17,10 +19,26 @@ var FilterKeyWorkds = (KeyWords) => {
   return Arr;
 };
 
-var CreateProjectForm = ({ classes, auth, PostMyProject, Data={} }) => {
-  const { postedAt='', duration='', title='', description='', location='', keywords=[]} = Data;
-  const datesArray = duration.split(' ');
-  
+var CreateProjectForm = ({
+  classes,
+  auth,
+  PostMyProject,
+  Data = {},
+  ShowLoader,
+  HideLoader
+}) => {
+  const history = useHistory();
+  const {
+    postedAt = "",
+    duration = "",
+    title = "",
+    description = "",
+    location = "",
+    keywords = [],
+  } = Data;
+  // const history = useHistory();
+  const datesArray = duration.split(" ");
+
   const [ProjectTitle, setProjectTitle] = useState(title);
   const [ProjectDescription, setProjectDescription] = useState(description);
   const [StartingDate, setStartingDate] = useState(
@@ -54,7 +72,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject, Data={} }) => {
 
   //Validations
 
-  const FormValidation = () => {
+  const FormValidation = async () => {
     if (ProjectTitle == "" || !ProjectTitle) setProjectTitleError(true);
     else if (ProjectDescription == "" || !ProjectDescription)
       setProjectDescriptionError(true);
@@ -71,7 +89,10 @@ var CreateProjectForm = ({ classes, auth, PostMyProject, Data={} }) => {
         duration: StartingDate + " To " + EndingDate,
         location: Location,
       };
-      PostMyProject(Obj);
+      ShowLoader();
+      await PostMyProject(Obj);
+      HideLoader();
+      history.push('/projects/myprojects')
     }
   };
 
@@ -177,6 +198,8 @@ const mapState = (state) => {
 
 var actions = {
   PostMyProject,
+  ShowLoader,
+  HideLoader,
 };
 
 export default connect(mapState, actions)(withStyles(style)(CreateProjectForm));
