@@ -4,7 +4,8 @@ export const useStyles = () => ({
         backgroundColor: '#fff',
         borderRadius: '0.5rem',
         marginBottom: '2rem',
-        border: '0.1rem solid #ddd'
+        border: '0.1rem solid #ddd',
+        cursor: 'pointer'
     },
     header: {
         width: '100%',

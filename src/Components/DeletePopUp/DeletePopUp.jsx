@@ -14,7 +14,7 @@ const DeletePopUp = ({ classes, DeleteRequest, DeleteProject, HideModal, Data, G
         Are you sure want to delete this?
       </div>
       <div className={classes.buttons}>
-        <button className={classes.accept}>Cancel</button>
+        <button className={classes.accept} onClick={HideModal}>Cancel</button>
         <button
           className={classes.reject}
           onClick={async () => {
@@ -28,8 +28,7 @@ const DeletePopUp = ({ classes, DeleteRequest, DeleteProject, HideModal, Data, G
                 break
               default:
                 break;
-            }
-            
+            }            
             HideModal();
           }}
         >
