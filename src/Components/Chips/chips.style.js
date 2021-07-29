@@ -12,10 +12,16 @@ export const useStyles = () => ({
     fontSize: "1.3rem",
     padding : '1.2rem'
   },
-  focus: {
+  focusChecked: {
       '&:focus': {
         backgroundColor: 'blue',
-          color:'white'
+        color:'white'
       }
-  }
+  },
+  focusUnChecked: {
+      '&:focus': {
+        backgroundColor: 'rgb(206, 206, 206)',
+        color:'black'
+      }
+  },
 });

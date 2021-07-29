@@ -6,14 +6,11 @@ const Chips = ({ classes, name, checked = false, handleChange = null }) => {
   return (
     <Chip
       label={name}
-      // classes={{
-      //   clickable	: 'ahad'
-      // }}
       size="small"
       className={checked ? classes.checked : classes.simple}
       classes={{
         labelSmall: classes.label,
-        clickable: classes.focus,
+        clickable: checked ? classes.focusChecked : classes.focusUnChecked,
       }}
       onClick={handleChange}
     />

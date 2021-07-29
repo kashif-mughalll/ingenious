@@ -41,5 +41,8 @@ export const useStyles = ()=> ({
   },
   marginright : {
     marginRight : "2rem"
+  },
+  label: {
+    fontSize: '3rem'
   }
 });
