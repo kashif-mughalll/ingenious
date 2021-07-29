@@ -1,6 +1,6 @@
 import { DB } from "./../../Firebase/Firebase-Configuration";
 
-export var GetAllProjects = (profile) => async (dispatch, getState) => {
+export var GetAllProjects = () => async (dispatch, getState) => {
   try {
     var myKeywords = getState().Profile.keywords;
     var projects = [];
@@ -25,6 +25,32 @@ export var GetAllProjects = (profile) => async (dispatch, getState) => {
       type: "SET_PROJECTS",
       payload: projects,
     });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export var AddCollaborator = (Obj) => async (dispatch, getState) => {
+  try {
+    let Project = await DB.collection("Projects").doc(Obj.pid).get();
+
+    var Arr;
+    if (!Project.data().collaborators) Arr = [Obj];
+    else {
+      Arr = [...Project.data().collaborators];
+      Arr.push(Obj);
+    }
+
+    await DB.collection("Projects").doc(Obj.pid).update({
+      collaborators: Arr,
+    });
+
+    // console.log(response)
+
+    // dispatch({
+    //   type: "SET_PROJECTS",
+    //   // payload: projects,
+    // });
   } catch (error) {
     console.error(error);
   }

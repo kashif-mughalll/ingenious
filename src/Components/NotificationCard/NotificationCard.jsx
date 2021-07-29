@@ -1,10 +1,23 @@
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { useStyles } from "./notification.style";
-import { ShowModal } from '../../Redux/Modal/ModalActions'
+import { ShowModal } from "../../Redux/Modal/ModalActions";
 import DeletePopUp from "../DeletePopUp/DeletePopUp";
+import {AddCollaborator} from '../../Redux/Projects/ProjectsActions'
+import { DeleteRequest } from './../../Redux/Requests/RequestsActions';
 
-const NotificationCard = ({ classes, ShowModal, id, rid, pid, info, keywords, title }) => {
+const NotificationCard = ({
+  AddCollaborator,
+  classes,
+  ShowModal,
+  id,
+  rid,
+  pid,
+  info,
+  keywords,
+  title,
+  DeleteRequest
+}) => {
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
@@ -23,13 +36,32 @@ const NotificationCard = ({ classes, ShowModal, id, rid, pid, info, keywords, ti
         project <b>"{title}"</b> as <b>{keywords.join(", ")}</b>
       </div>
       <div className={classes.buttons}>
-        <button className={classes.accept}>
+        <button
+          className={classes.accept}
+          onClick={async () => {
+            var Obj = {
+              pid,
+              name : info.name,
+              picture : info.picture,
+              id,
+              keywords,
+            }
+            await AddCollaborator(Obj);
+            await DeleteRequest(rid);
+
+          }}
+        >
           <i className="fas fa-user-plus"></i>
         </button>
         <button className={classes.call}>
           <i className="fas fa-phone"></i>
         </button>
-        <button className={classes.reject} onClick={()=>{ShowModal(DeletePopUp, ['notification',rid])}}>
+        <button
+          className={classes.reject}
+          onClick={() => {
+            ShowModal(DeletePopUp, ["notification", rid]);
+          }}
+        >
           <i className="far fa-trash-alt"></i>
         </button>
       </div>
@@ -38,7 +70,9 @@ const NotificationCard = ({ classes, ShowModal, id, rid, pid, info, keywords, ti
 };
 
 const actions = {
-    ShowModal
-}
+  ShowModal,
+  AddCollaborator,
+  DeleteRequest
+};
 
 export default connect(null, actions)(withStyles(useStyles)(NotificationCard));

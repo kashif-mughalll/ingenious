@@ -5,7 +5,10 @@ export var PostMyProject = (project) => async (dispatch, getState) => {
     let Projects = [...getState().PostedProjects];
     let response = await DB.collection("Projects").doc(project.id).set(project);
     console.log(response);
-    Projects.push(project);
+    Projects.push({
+      ...project,
+      collaborators : [],
+    });
     dispatch({
       type: "SET_POSTED_PROJECTS",
       payload: Projects,
