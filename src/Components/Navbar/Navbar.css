@@ -13,8 +13,10 @@
 }
 
 .navbar-center{
-    display: grid;
-    grid-template-columns: 38rem 1fr;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-center-left{
@@ -24,16 +26,14 @@
 }
 
 .navbar-logo{
-    height: 5rem;
-    width: 4.5rem;
+    height: 4.7rem;
+    width: 4.2rem;
     margin-right: 0.8rem;
 }
 
 .navbar-center-right{
     display: flex;
     align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 17rem;
 }
 
 .navbar-center-right-div{
@@ -50,8 +50,8 @@
 }
 
 .nav-pic-cont{
-    height: 4.2rem;
-    width: 4.2rem;
+    height: 3.8rem;
+    width: 3.8rem;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
