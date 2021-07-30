@@ -36,7 +36,7 @@ var ProfileView = ({profile, classes, myProjects, GetMyProjects})=> {
                     <h1>About</h1>
                     <p>{description}</p>
                 </div>
-                <div className={classes.projects}>
+                <div className={classes.projects + " res-class-6"}>
                     <h1 className={classes.projectHeading}>MY PROJECTS</h1>
                     {myProjects.map( project => <div key={project.id} ><PostCard project={project} editable={true} /></div> )}
                 </div>
