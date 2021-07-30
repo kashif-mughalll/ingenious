@@ -27,7 +27,7 @@ const CollaborationCard = ({
         <button
           className={classes.reject}
           onClick={() => {
-            ShowModal(DeletePopUp, ["collaboration", rid]);
+            ShowModal(DeletePopUp, ["collaboration", {rid,pid,id}]);
           }}
         >
           <i className="far fa-trash-alt"></i>
