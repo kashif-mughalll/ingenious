@@ -70,6 +70,9 @@ const PostCard = ({
             <Chips key={name} name={name} />
           ))}
         </div>
+        <div className={classes.matchBox}>
+          This project matches your intrest by <b>{match}%</b>
+        </div>
         {
           (editable && collaborators) ?
           collaborators.map( person => <Collaborator person={person} />) :

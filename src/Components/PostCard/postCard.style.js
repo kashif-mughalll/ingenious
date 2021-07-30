@@ -126,5 +126,10 @@ export const useStyles = () => ({
           content: '""',
           flex: "auto",
         },
+    },
+    matchBox: {
+        color: '#888',
+        fontSize: '1.3rem',
+        marginTop: '1.8rem'
     }
 })
