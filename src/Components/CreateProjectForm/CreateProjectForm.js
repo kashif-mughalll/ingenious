@@ -32,7 +32,7 @@ var CreateProjectForm = ({
   HideLoader,
   UpdateMyProject,
   HideModal,
-  defaultKeywords
+  defaultKeywords={}
 }) => {
   const history = useHistory();
   const {

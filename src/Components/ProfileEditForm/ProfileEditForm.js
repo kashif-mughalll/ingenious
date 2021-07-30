@@ -8,6 +8,7 @@ import DomainSelector from "./../DomainSelector/DomainSelector";
 import { SetProfile } from "../../Redux/Profile/ProfileAcions";
 import { connect } from "react-redux";
 import { HideLoader, ShowLoader } from './../../Redux/Loader/LoaderActions';
+import { useEffect } from "react";
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -47,6 +48,10 @@ var ProfileEditForm = ({
   const [JobTitle, setJobTitle] = useState(jobTitle ? jobTitle : "");
   const [About, setAbout] = useState(about ? about : "");
   const [KeyWords, setKeyWords] = useState(defaultKeywords);
+
+  useEffect(()=>{
+    setKeyWords(defaultKeywords)
+  },[defaultKeywords])
 
   // Error States
   const [NameError, setNameError] = useState(false);
