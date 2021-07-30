@@ -6,8 +6,14 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import ModalContainer from "./Components/ModalContainer/ModalContainer";
 import Loader from './Components/LoaderContainer/Loader';
 import "./MediaQuery/MediaQuery.css";
+import { useEffect } from "react";
+import { GetKeywords } from "./Redux/Keywords/KeywordsActions";
 
-var App = ({ Auth, Profile , Modal ,loader}) => {
+var App = ({ Auth, Profile , Modal ,loader,GetKeywords}) => {
+
+  useEffect(()=>{
+    GetKeywords()
+  },[])
 
   return (
     <>
@@ -27,4 +33,8 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState)(App);
+const actions = {
+  GetKeywords
+}
+
+export default connect(mapState,actions)(App);
