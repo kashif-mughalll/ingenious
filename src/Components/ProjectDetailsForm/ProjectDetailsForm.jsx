@@ -66,7 +66,7 @@ const ProjectDetailsForm = ({
       </div>
       <div className={classes.collaborators}>
         {
-          collaborators ? collaborators.map( person => <Collaborator person={person} />) : null
+          collaborators ? collaborators.map( person => <Collaborator key={person.id} person={person} />) : null
         }
       </div>
       {!display ? (
