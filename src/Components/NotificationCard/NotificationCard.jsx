@@ -47,7 +47,7 @@ const NotificationCard = ({
               pid,
               name : info.name,
               picture : info.picture,
-              id: info.id,
+              id : info.id,
               keywords,
             }
             await AddCollaborator(Obj);

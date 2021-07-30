@@ -10,13 +10,15 @@ import SocketConnection from "../../VideoChat/Connection/Connection";
 import { connect } from 'react-redux';
 import ChatView from "../../VideoChat/ChatView/ChatView";
 import {GetCollaborationRequests} from '../../Redux/Requests/RequestsActions'
+import { GetAllProjects } from './../../Redux/Projects/ProjectsActions';
 
 
-var Dashboard = ({call,GetCollaborationRequests}) => {
-  useEffect(() => {
+var Dashboard = ({call,GetCollaborationRequests,GetAllProjects}) => {
+  useEffect( async () => {
     console.log("Mounting Dashboard");
     // SocketConnection();    
-    GetCollaborationRequests();
+    await GetAllProjects();
+    await GetCollaborationRequests();
   }, [])
 
   return (
@@ -46,7 +48,8 @@ const mapState = (state) => {
 }
 
 const actions = {
-  GetCollaborationRequests
+  GetCollaborationRequests,
+  GetAllProjects
 }
 
 export default connect(mapState,actions)(Dashboard);
