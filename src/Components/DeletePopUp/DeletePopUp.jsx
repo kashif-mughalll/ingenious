@@ -38,6 +38,9 @@ const DeletePopUp = ({
               case "notification":
                 await DeleteRequest(Data[1]);
                 break;
+              case "collaboration":
+                // await DeleteRequest(Data[1]);
+                break;
               case "project":
                 await DeleteProject(Data[1]);
                 await GetMyProjects();
