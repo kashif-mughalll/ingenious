@@ -16,6 +16,14 @@ var FilterKeyWorkds = (KeyWords) => {
   });
   return Arr;
 };
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(" ");
+  for (var i = 0; i < splitStr.length; i++) {
+    splitStr[i] =
+      splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  return splitStr.join(" ");
+}
 
 var ProfileEditForm = ({
   SetProfile,
@@ -29,7 +37,8 @@ var ProfileEditForm = ({
   picture,
   id,
   ShowLoader,
-  HideLoader
+  HideLoader,
+  defaultKeywords
 }) => {
   const [FullName, setFullName] = useState(name ? name : "");
   const [Email, setEmail] = useState(email ? email : "");
@@ -37,21 +46,7 @@ var ProfileEditForm = ({
   const [Dob, setDob] = useState(dob ? dob : "");
   const [JobTitle, setJobTitle] = useState(jobTitle ? jobTitle : "");
   const [About, setAbout] = useState(about ? about : "");
-  const [KeyWords, setKeyWords] = useState({
-    development: false,
-    designing: false,
-    accounts: false,
-    mangement: false,
-    aeronotical: false,
-    electrical: false,
-    mechanical: false,
-    feild1: false,
-    feild2: false,
-    feild3: false,
-    feild4: false,
-    feild5: false,
-    feild6: false,
-  });
+  const [KeyWords, setKeyWords] = useState(defaultKeywords);
 
   // Error States
   const [NameError, setNameError] = useState(false);
@@ -82,7 +77,7 @@ var ProfileEditForm = ({
         description: About,
         title: JobTitle,
         dob: Dob,
-        name: FullName,
+        name: titleCase(FullName),
         email,
         Email,
         picture: picture,
@@ -206,10 +201,14 @@ var ProfileEditForm = ({
   );
 };
 
+const mapState = state => ({
+  defaultKeywords: state.Keywords
+})
+
 var actions = {
   SetProfile,
   ShowLoader,
   HideLoader
 };
 
-export default connect(null, actions)(withStyles(style)(ProfileEditForm));
+export default connect(mapState, actions)(withStyles(style)(ProfileEditForm));

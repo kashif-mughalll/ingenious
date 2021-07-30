@@ -31,7 +31,8 @@ var CreateProjectForm = ({
   ShowLoader,
   HideLoader,
   UpdateMyProject,
-  HideModal
+  HideModal,
+  defaultKeywords
 }) => {
   const history = useHistory();
   const {
@@ -53,21 +54,7 @@ var CreateProjectForm = ({
   const [EndingDate, setEndingDate] = useState(datesArray[2]);
   const [Location, setLocation] = useState(location || "Pakistan");
 
-  const [KeyWords, setKeyWords] = useState({
-    development: false,
-    designing: false,
-    accounts: false,
-    mangement: false,
-    aeronotical: false,
-    electrical: false,
-    mechanical: false,
-    feild1: false,
-    feild2: false,
-    feild3: false,
-    feild4: false,
-    feild5: false,
-    feild6: false,
-  });
+  const [KeyWords, setKeyWords] = useState(defaultKeywords);
   useEffect(()=>{
     if(keywords.length>0) {
       var selectedKeywords = {};
@@ -219,6 +206,7 @@ const mapState = (state) => {
   };
   return {
     auth: auth,
+    defaultKeywords : state.Keywords
   };
 };
 
