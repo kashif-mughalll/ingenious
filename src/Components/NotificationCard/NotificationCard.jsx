@@ -44,12 +44,18 @@ const NotificationCard = ({
           onClick={async () => {
             ShowLoader();
             var Obj = {
+<<<<<<< HEAD
               title,
               pid,
+=======
+>>>>>>> 66819e182d152ee794cbd54669387225bb742fae
               name : info.name,
               picture : info.picture,
               id : info.id,
+              rid,
+              pid,
               keywords,
+              title
             }
             await AddCollaborator(Obj);
             await DeleteRequest(rid);
