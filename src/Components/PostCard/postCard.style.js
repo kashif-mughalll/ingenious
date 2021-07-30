@@ -83,7 +83,10 @@ export const useStyles = () => ({
         fontSize: '1.1rem',
         color: '#666',
         '& i':{
-            paddingRight: '0.5rem'
+            paddingRight: '0.5rem',
+            '&:hover': {
+                color: '#e30000a1',
+            }
         }
     },
     dates: {
@@ -95,14 +98,14 @@ export const useStyles = () => ({
         fontSize: '1.2rem',
         color: '#888',
         '& :first-child': {
-            marginBottom : '0.4rem'
+            marginBottom : '0.8rem'
         }
     },
     projectTitle: {
         fontSize: '2rem',
         fontWeight: 'bold',
         padding: '1rem 0',
-        color: 'rgb(0, 101, 114)'
+        color: 'rgb(0, 62, 155)'
     },
     projectDescription: {
         fontSize: '1.4rem',

@@ -29,7 +29,6 @@ export const useStyles = () => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
         '& i': {
             marginRight: '1rem'
@@ -56,7 +55,6 @@ export const useStyles = () => ({
         fontStyle: 'italic',
         padding: '1rem',
         margin: '2rem 0',
-        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
         '& h1': {
             fontSize: '2rem',
@@ -65,11 +63,11 @@ export const useStyles = () => ({
         '& p': {
             fontSize: '1.5rem',
             paddingTop: '1rem',
+            whiteSpace: 'pre-line',
         },
     },
     domain: {
         padding: '1rem',
-        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
     },
     domainHeading: {
@@ -88,7 +86,6 @@ export const useStyles = () => ({
     },
     projects: {
         padding: '1rem',
-        // boxShadow: '0rem 0rem 1rem -0.5rem',
         borderRadius: '0.5rem',
     },
     projectHeading: {

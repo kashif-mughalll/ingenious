@@ -35,9 +35,8 @@ export const useStyles = () => ({
     },
     authName: {
         fontWeight: 'bold',
-        fontSize: '1.5rem',
-        fontStyle: 'italic',
-        color: 'rgb(0, 101, 114)',
+        fontSize: '1.7rem',
+        color: '#555',
     },
     projectName: {
         fontSize: '2.4rem',
