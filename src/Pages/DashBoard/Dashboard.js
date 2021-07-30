@@ -8,10 +8,8 @@ import ProfileView from "./../Views/ProfileView/ProfileView";
 import NotificationView from "./../Views/NotificationView/NotificationView";
 import SocketConnection from "../../VideoChat/Connection/Connection";
 import { connect } from "react-redux";
-import ChatView from "../../VideoChat/ChatView/ChatView";
 import { GetCollaborationRequests } from "../../Redux/Requests/RequestsActions";
 import { GetAllProjects } from "./../../Redux/Projects/ProjectsActions";
-import { DB } from './../../Firebase/Firebase-Configuration';
 import { GetKeywords } from './../../Redux/Keywords/KeywordsActions';
 
 var Dashboard = ({ call, GetCollaborationRequests, GetAllProjects, GetKeywords }) => {
@@ -57,29 +55,29 @@ const actions = {
 
 export default connect(mapState, actions)(Dashboard);
 
-function f() {
-  var obj = {
-    Html5: false,
-    CSS3: false,
-    JavaScript: false,
-    Angular: false,
-    React: false,
-    Redux: false,
-    BootStrap: false,
-    MaterialUI: false,
-    TypeScript : false,
-    Vue: false,
-    CMS :false,
-    Flutter: false,
-    firebase:false,
-    NodeJs:false,
-    MongoDB:false,
-    SQL: false,
-    MySql:false,
-    PHP:false,
-    wordPress: false,
-    Express:false
-  };
+// function f() {
+//   var obj = {
+//     Html5: false,
+//     CSS3: false,
+//     JavaScript: false,
+//     Angular: false,
+//     React: false,
+//     Redux: false,
+//     BootStrap: false,
+//     MaterialUI: false,
+//     TypeScript : false,
+//     Vue: false,
+//     CMS :false,
+//     Flutter: false,
+//     firebase:false,
+//     NodeJs:false,
+//     MongoDB:false,
+//     SQL: false,
+//     MySql:false,
+//     PHP:false,
+//     wordPress: false,
+//     Express:false
+//   };
 
-  DB.collection('Keywords').doc('web-development').set(obj);
-}
+//   DB.collection('Keywords').doc('web-development').set(obj);
+// }

@@ -201,7 +201,7 @@ var CreateProjectForm = ({
 const mapState = (state) => {
   const auth = {
     id: state.Auth.id,
-    picture: state.Auth.picture,
+    picture: state.Profile.picture,
     name: state.Auth.name,
   };
   return {
