@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import {useEffect} from 'react'
 import './MyProjectsView.css'
 import { connect } from 'react-redux';
 import { GetMyProjects } from '../../../Redux/PostedProjects/PostedProjectsAction';

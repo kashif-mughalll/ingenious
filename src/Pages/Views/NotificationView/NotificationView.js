@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { RDB } from "../../../Firebase/Firebase-Configuration";
 import "./NotificationView.css";
 import { connect } from "react-redux";
