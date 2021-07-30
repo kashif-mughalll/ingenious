@@ -8,6 +8,7 @@ import {
   GetMyProjects,
 } from "../../Redux/PostedProjects/PostedProjectsAction";
 import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
+import { EndCollaboration } from "../../Redux/Collaborations/CollaborationsActions";
 const DeletePopUp = ({
   classes,
   DeleteRequest,
@@ -17,6 +18,7 @@ const DeletePopUp = ({
   GetMyProjects,
   ShowLoader,
   HideLoader,
+  EndCollaboration
 }) => {
   return (
     <div className={classes.container}>
@@ -39,7 +41,7 @@ const DeletePopUp = ({
                 await DeleteRequest(Data[1]);
                 break;
               case "collaboration":
-                // await DeleteRequest(Data[1]);
+                await EndCollaboration(Data[1]);
                 break;
               case "project":
                 await DeleteProject(Data[1]);
@@ -66,6 +68,7 @@ const actions = {
   HideModal,
   ShowLoader,
   HideLoader,
+  EndCollaboration
 };
 
 export default connect(null, actions)(withStyles(useStyles)(DeletePopUp));
