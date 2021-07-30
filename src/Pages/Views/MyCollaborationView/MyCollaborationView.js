@@ -10,11 +10,11 @@ var MyCollaborationView = ({ Collaborations, GetMyCollaborations })=> {
     useEffect(async () => {        
         await GetMyCollaborations();
     }, [])
-
+    console.log(Collaborations);
     return (
         <div className="my-collaboration-view-cont">
             <h1 className="my-collaboration-view-head">My Collaborations</h1>
-            {/* {Collaborations.map( element => <CollaborationCard key={Uuid()} {...element} />)} */}
+            {Collaborations ? Collaborations.map( element => <CollaborationCard key={Uuid()} {...element} />) : null}
         </div>
     )
 }

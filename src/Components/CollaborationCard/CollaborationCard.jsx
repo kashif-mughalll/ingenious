@@ -10,9 +10,10 @@ const CollaborationCard = ({
   id,
   rid,
   pid,
-  info,
+  name,
+  picture,
   keywords,
-  title,
+  title
 }) => {
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
@@ -25,16 +26,16 @@ const CollaborationCard = ({
   return (
     <div className={classes.container}>
       <div className={classes.avatar}>
-        <img src={info.picture} alt="profile picture" />
+        <img src={picture} alt="profile picture" />
       </div>
       <div className={classes.details}>
-        You have collaborated in <b>{titleCase(info.name)}'s</b> project <b>"{title}"</b> as <b>{keywords.join(", ")}</b>
+        You have collaborated in <b>{titleCase(name)}'s</b> project <b>"{title}"</b> as <b>{keywords.join(", ")}</b>
       </div>
       <div className={classes.buttons}>
         <button
           className={classes.reject}
           onClick={() => {
-            ShowModal(DeletePopUp, ["notification", rid]);
+            ShowModal(DeletePopUp, ["collaboration", rid]);
           }}
         >
           <i className="far fa-trash-alt"></i>
