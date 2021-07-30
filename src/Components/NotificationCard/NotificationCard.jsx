@@ -44,6 +44,7 @@ const NotificationCard = ({
           onClick={async () => {
             ShowLoader();
             var Obj = {
+              title,
               pid,
               name : info.name,
               picture : info.picture,
