@@ -11,8 +11,9 @@ html {
 }
 
 .color{
-  color : rgb(0, 62, 155);
-  color : rgb(160, 76, 76)
+  color : rgb(0, 101, 114);
+  color : rgb(144,202,249);
+  color : rgb(160, 76, 76);
 }
 
 .flex {
@@ -34,3 +35,28 @@ html {
   justify-content: center;
 }
 
+
+.res-class-1{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-right: 1.5rem;
+  font-size: 1.2rem;
+
+  color: #999;
+        
+}
+
+.res-class-1 div{
+  margin-bottom : 0.4rem;
+}
+
+.res-class-2{
+  width : 60rem
+}
+
+.res-class-3{
+  width: 70rem;
+}

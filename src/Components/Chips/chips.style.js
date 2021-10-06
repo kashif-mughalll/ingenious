@@ -5,15 +5,23 @@ export const useStyles = () => ({
     margin: "0.6rem",
   },
   simple: {
-    margin: "0.6rem",
+    margin: "0.7rem",
+    marginLeft: "0rem",
   },
   label: {
-    fontSize: "1.2rem",
+    fontSize: "1.3rem",
+    padding : '1.2rem'
   },
-  focus: {
+  focusChecked: {
       '&:focus': {
         backgroundColor: 'blue',
-          color:'white'
+        color:'white'
       }
-  }
+  },
+  focusUnChecked: {
+      '&:focus': {
+        backgroundColor: 'rgb(206, 206, 206)',
+        color:'black'
+      }
+  },
 });

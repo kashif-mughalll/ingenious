@@ -10,10 +10,10 @@ export const useStyles = () => ({
         }
     },
     avatar: {
-        height: '7.4rem',
+        height: '6.3rem',
         '& img': {
-            width: '6rem',
-            height: '6rem',
+            width: '5rem',
+            height: '5rem',
             margin: '0.7rem',
             borderRadius: '50%',
             overflow: 'hidden',
@@ -24,19 +24,21 @@ export const useStyles = () => ({
         fontSize: '1.4rem',
         padding: '1rem',
         textAlign: 'justify',
+        color : '#444'
     },
     buttons: {
-        width: '20rem',
+        width: '22rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         margin: '0 0.8rem',
         '&>button': {
-            width: '7rem',
+            width: '4rem',
             fontSize: '1.4rem',
             padding: '1rem 0',
             borderRadius: '0.5rem',
             color: 'white',
+            margin : '0 0.3rem'
         }
     },
     accept: {
@@ -46,8 +48,14 @@ export const useStyles = () => ({
             backgroundColor: 'rgb(0, 62, 255)',
         },
     },
+    call: {
+        backgroundColor: 'rgb(25, 160, 50)',
+        '&:hover': {
+            cursor: 'pointer',
+            backgroundColor: 'rgb(5, 215, 50)',
+        },
+    },
     reject: {
-        marginLeft: '0.5rem',
         backgroundColor: 'rgb(235, 50, 50)',
         '&:hover': {
             cursor: 'pointer',

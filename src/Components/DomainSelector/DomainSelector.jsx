@@ -10,7 +10,8 @@ const DomainSelector = ({
   setKeyWords,
   setKeyWordsError
 }) => {
-  let temp = Object.entries(keyWords);
+  let temp = [];
+  if(keyWords) temp = Object.entries(keyWords);
   return (
     <div className={classes.container}>
       <FormControl className={classes.checkGroup} component="fieldset">

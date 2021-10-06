@@ -7,7 +7,13 @@ import DomainSelector from "../DomainSelector/DomainSelector";
 import { connect } from "react-redux";
 import CountryRegionSelector from "../CountryRegionSelector/CountryRegionSelector";
 import { v4 as Uuid } from "uuid";
-import { PostMyProject } from "./../../Redux/PostedProjects/PostedProjectsAction";
+import {
+  PostMyProject,
+  UpdateMyProject,
+} from "./../../Redux/PostedProjects/PostedProjectsAction";
+import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
+import { useHistory } from "react-router-dom";
+import { HideModal } from "../../Redux/Modal/ModalActions";
 
 var FilterKeyWorkds = (KeyWords) => {
   var Arr = [];
@@ -17,30 +23,51 @@ var FilterKeyWorkds = (KeyWords) => {
   return Arr;
 };
 
-var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
-  const [ProjectTitle, setProjectTitle] = useState("");
-  const [ProjectDescription, setProjectDescription] = useState("");
-  const [StaringDate, setStaringDate] = useState(
-    new Date().toISOString().slice(0, 10)
-  );
-  const [EndingDate, setEndingDate] = useState("");
-  const [Location, setLocation] = useState("Pakistan");
+var CreateProjectForm = ({
+  classes,
+  auth,
+  PostMyProject,
+  Data,
+  ShowLoader,
+  HideLoader,
+  UpdateMyProject,
+  HideModal,
+  defaultKeywords={}
+}) => {
+  const history = useHistory();
+  const {
+    id,
+    postedAt = "",
+    duration = "",
+    title = "",
+    description = "",
+    location = "",
+    keywords = [],
+  } = Data || {};
+  const datesArray = duration.split(" ");
 
-  const [KeyWords, setKeyWords] = useState({
-    development: false,
-    designing: false,
-    accounts: false,
-    mangement: false,
-    aeronotical: false,
-    electrical: false,
-    mechanical: false,
-    feild1: false,
-    feild2: false,
-    feild3: false,
-    feild4: false,
-    feild5: false,
-    feild6: false,
-  });
+  const [ProjectTitle, setProjectTitle] = useState(title);
+  const [ProjectDescription, setProjectDescription] = useState(description);
+  const [StartingDate, setStartingDate] = useState(
+    datesArray[0] || new Date().toISOString().slice(0, 10)
+  );
+  const [EndingDate, setEndingDate] = useState(datesArray[2]);
+  const [Location, setLocation] = useState(location || "Pakistan");
+
+  const [KeyWords, setKeyWords] = useState(defaultKeywords);
+  useEffect(()=>{
+    if(keywords.length>0) {
+      var selectedKeywords = {};
+      console.log(keywords);
+      for (let i = 0; i < keywords.length; i++) {
+        selectedKeywords[keywords[i]] = true;
+      }
+      setKeyWords({
+        ...KeyWords,
+        ...selectedKeywords,
+      })
+    }
+  },[Data])
 
   // Error States
 
@@ -51,7 +78,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
 
   //Validations
 
-  const FormValidation = () => {
+  const FormValidation = async () => {
     if (ProjectTitle == "" || !ProjectTitle) setProjectTitleError(true);
     else if (ProjectDescription == "" || !ProjectDescription)
       setProjectDescriptionError(true);
@@ -65,15 +92,25 @@ var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
         title: ProjectTitle,
         description: ProjectDescription,
         keywords: FilterKeyWorkds(KeyWords),
-        duration: StaringDate + " To " + EndingDate,
+        duration: StartingDate + " To " + EndingDate,
         location: Location,
       };
-      PostMyProject(Obj);
+      ShowLoader();
+      if (Data) {
+        Obj.id = id;
+        Obj.postedAt = postedAt;
+        await UpdateMyProject(Obj);
+        await HideModal();
+      } else await PostMyProject(Obj);
+      HideLoader();
+      history.push("/projects/myprojects");
     }
   };
-
+  
   return (
-    <div className={classes.container1}>
+    <div
+      className={Data ? classes.modalView + " res-class-3" : classes.container}
+    >
       <FormControl fullWidth>
         <p className="profile-page-heaing2">Project Information</p>
         <TextField
@@ -113,7 +150,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
         <div className="flex">
           <TextField
             onChange={(e) => {
-              setStaringDate(e.target.value);
+              setStartingDate(e.target.value);
             }}
             InputLabelProps={{ style: { fontSize: "1.5rem" } }}
             fullWidth
@@ -122,7 +159,7 @@ var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
             id="date"
             label="Project Starting Date"
             type="date"
-            defaultValue={StaringDate}
+            defaultValue={StartingDate}
             InputLabelProps={{ shrink: true }}
           />
           <TextField
@@ -164,16 +201,21 @@ var CreateProjectForm = ({ classes, auth, PostMyProject }) => {
 const mapState = (state) => {
   const auth = {
     id: state.Auth.id,
-    picture: state.Auth.picture,
+    picture: state.Profile.picture,
     name: state.Auth.name,
   };
   return {
     auth: auth,
+    defaultKeywords : state.Keywords
   };
 };
 
 var actions = {
   PostMyProject,
+  ShowLoader,
+  HideLoader,
+  UpdateMyProject,
+  HideModal
 };
 
 export default connect(mapState, actions)(withStyles(style)(CreateProjectForm));

@@ -12,7 +12,7 @@ var firebaseConfig = {
   storageBucket: "ingenious-ecd53.appspot.com",
   messagingSenderId: "688117323981",
   appId: "1:688117323981:web:d9e3db753ce2dd1faeb184",
-};
+}
 
 firebase.initializeApp(firebaseConfig);
 

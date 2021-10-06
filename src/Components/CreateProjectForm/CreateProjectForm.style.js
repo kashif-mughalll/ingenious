@@ -31,10 +31,40 @@ export const style = ()=> ({
     margintop : {
       marginTop : "2rem",
     },
-    container1 : {
-      width : "70%",
+    container : {
+      padding: '1rem',
+      width : "100%",
       display : 'flex',
-      justifyContent : 'center',
-      flexFlow : "column"
+      flexDirection : "column",
+      backgroundColor: 'white',
+      '&::-webkit-scrollbar': {
+          width: '6px'
+      },
+      '&::-webkit-scrollbar-thumb': {
+          background: '888', 
+          borderRadius: '5px',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+          background: '#555',
+      }
+    },
+    modalView: {
+      height: '65vh',
+      padding: '3rem',
+      overflowY: 'scroll',
+      borderRadius: '1.5rem',
+      display : 'flex',
+      flexDirection : "column",
+      backgroundColor: 'white',
+      '&::-webkit-scrollbar': {
+          width: '6px'
+      },
+      '&::-webkit-scrollbar-thumb': {
+          background: '888', 
+          borderRadius: '5px',
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+          background: '#555',
+      }
     }
   });

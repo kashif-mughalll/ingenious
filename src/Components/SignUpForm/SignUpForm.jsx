@@ -1,4 +1,4 @@
-import React,{useState,useRef} from "react";
+import React, { useState, useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,8 @@ import { useStyles } from "./form.style";
 import ButtonGoogleLogin from "../ButtonGoogleLogin/ButtonGoogleLogin";
 import { Grid } from "@material-ui/core";
 import { SignUpWithEmailPass } from "../../Redux/Auth/authActions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { HideLoader, ShowLoader } from "./../../Redux/Loader/LoaderActions";
 
 const validationSchema = yup.object({
   firstname: yup
@@ -29,9 +30,14 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-const LoginForm = ({ classes, toggleHandler , SignUpWithEmailPass }) => {
-
-  const Divref = useRef(null)
+const LoginForm = ({
+  classes,
+  toggleHandler,
+  SignUpWithEmailPass,
+  ShowLoader,
+  HideLoader,
+}) => {
+  const Divref = useRef(null);
   const [Error, setError] = useState(false);
 
   const formik = useFormik({
@@ -42,8 +48,15 @@ const LoginForm = ({ classes, toggleHandler , SignUpWithEmailPass }) => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: ({firstname,lastname,email,password}) => {      
-      SignUpWithEmailPass(firstname + " " + lastname,email,password,setError);
+    onSubmit: async ({ firstname, lastname, email, password }) => {
+      ShowLoader();
+      await SignUpWithEmailPass(
+        firstname + " " + lastname,
+        email,
+        password,
+        setError
+      );
+      HideLoader();
     },
   });
   return (
@@ -117,9 +130,18 @@ const LoginForm = ({ classes, toggleHandler , SignUpWithEmailPass }) => {
               name="email"
               label="Email"
               value={formik.values.email}
-              onChange={(e)=>{ setError(false); formik.handleChange(e)}}
-              error={(formik.touched.email && Boolean(formik.errors.email)) || Error}
-              helperText={Error ? 'Email already exists' : formik.touched.email && formik.errors.email}
+              onChange={(e) => {
+                setError(false);
+                formik.handleChange(e);
+              }}
+              error={
+                (formik.touched.email && Boolean(formik.errors.email)) || Error
+              }
+              helperText={
+                Error
+                  ? "Email already exists"
+                  : formik.touched.email && formik.errors.email
+              }
             />
           </Grid>
           <Grid item xs={12}>
@@ -176,7 +198,9 @@ const LoginForm = ({ classes, toggleHandler , SignUpWithEmailPass }) => {
 };
 
 const actions = {
-  SignUpWithEmailPass
-}
+  SignUpWithEmailPass,
+  ShowLoader,
+  HideLoader,
+};
 
-export default connect(null,actions)(withStyles(useStyles)(LoginForm));
+export default connect(null, actions)(withStyles(useStyles)(LoginForm));

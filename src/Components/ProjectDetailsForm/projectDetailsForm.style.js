@@ -1,9 +1,9 @@
 export const useStyles = () => ({
     container: {
-        width: '60rem',
         padding: '3rem',
         backgroundColor: 'white',
-        maxHeight: '80vh',
+        maxHeight: '75vh',
+        borderRadius: '1rem',
         overflowY: 'scroll',
         '&::-webkit-scrollbar': {
             width: '6px'
@@ -15,6 +15,10 @@ export const useStyles = () => ({
         '&::-webkit-scrollbar-thumb:hover': {
             background: '#555',
         }
+    },
+    errorClass:{
+        fontSize: '1.3rem',
+        color : "red",
     },
     authDescription: {
         display: 'flex',
@@ -31,17 +35,19 @@ export const useStyles = () => ({
     },
     authName: {
         fontWeight: 'bold',
-        fontSize: '2rem',
-        fontStyle: 'italic',
+        fontSize: '1.7rem',
+        color: '#555',
     },
     projectName: {
-        fontSize: '4rem',
+        fontSize: '2.4rem',
         fontWeight: 'bold',
         marginTop: '2rem',
+        color: '#666',
     },
     dates: {
         marginTop: '3rem',
         fontSize: '1.3rem',
+        color: '#888',
         '& b': {
             marginRight: '0.7rem',
         },
@@ -51,11 +57,12 @@ export const useStyles = () => ({
     },
     description: {
         marginTop: '3rem',
+        color: '#666',
         '& b': {
-            fontSize: '2rem',
+            fontSize: '1.8rem',
         },
         '& div': {
-            fontSize: '1.5rem',
+            fontSize: '1.4rem',
             marginTop: '0.8rem',
         },
     },
@@ -82,5 +89,8 @@ export const useStyles = () => ({
             fontSize: '1.5rem',
             margin: '0.7rem 0'
         }
+    },
+    collaborators: {
+        marginTop: '2rem'
     }
 });

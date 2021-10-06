@@ -9,6 +9,9 @@ import RequestsReducer from './Requests/RequestsReducer';
 import SocketReducer from './Socket/SocketReducer';
 import IncomingCallReducer from './IncomingCall/IncomingCallReducer';
 import ProjectsReducer from './Projects/ProjectsReducer';
+import LoaderReducer from './Loader/LoaderReducer';
+import CollaborationsReducer from './Collaborations/CollaborationsReducer';
+import KeywordsReducer from './Keywords/KeywordsReducer';
 
 
 const PersistConfig = {
@@ -25,7 +28,10 @@ var rootReducer = combineReducers({
   Modal : ModalReducer,
   Socket : SocketReducer,
   IncomingCall : IncomingCallReducer,
-  Projects : ProjectsReducer
+  Projects : ProjectsReducer,
+  Loader : LoaderReducer,
+  Collaborations : CollaborationsReducer,
+  Keywords : KeywordsReducer
 });
 
 export default persistReducer(PersistConfig,rootReducer)
